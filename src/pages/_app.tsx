@@ -2,6 +2,7 @@ import { ConvexClientProvider } from "@/ConvexClientProvider";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
+import { Toaster } from "sonner";
 
 export default function App({
   Component,
@@ -11,6 +12,7 @@ export default function App({
     <SessionProvider session={session}>
       <ConvexClientProvider>
         <Component {...pageProps} />
+        <Toaster richColors  position="top-center" />
       </ConvexClientProvider>
     </SessionProvider>
   );

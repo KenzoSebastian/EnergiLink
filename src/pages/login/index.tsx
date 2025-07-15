@@ -1,28 +1,37 @@
 import { LoginForm } from "@/components/shared/form/LoginForm";
 import { Logo } from "@/components/shared/Logo";
+import { verifyPassword } from "@/lib/bcript";
 import { loginSchema, type LoginSchemaValue } from "@/schema/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signIn, useSession } from "next-auth/react";
+import { useMutation } from "convex/react";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { api } from "../../../convex/_generated/api";
 
 const LoginPage = () => {
-  const navigate = useRouter();
-  const session = useSession();
+  const getUser = useMutation(api.tables.user.getUserByEmail);
   const loginForm = useForm<LoginSchemaValue>({
     resolver: zodResolver(loginSchema),
   });
 
-  const handleSubmitForm = (data: LoginSchemaValue) => {
-    signIn("credentials", data);
+  const handleSubmitForm = async(data: LoginSchemaValue) => {
+    const user = await getUser({ email: data.email });
+    if (!user) {
+      toast.error("Email atau password salah");
+      return;
+    }
+    if (await verifyPassword(data.password, user.password)) {
+      signIn("credentials", { ...data, role: user.role });
+    } else {
+      toast.error("Email atau password salah");
+      
+    }
   };
 
-  useEffect(() => {
-    console.log(session);
-  }, [session]);
+  
   return (
     <div className="flex justify-center min-h-screen">
       <div className="flex flex-col max-w-2xl h-full md:flex-row md:max-w-7xl">

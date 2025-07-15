@@ -1,23 +1,25 @@
 import { RegisterForm } from "@/components/shared/form/RegisterForm";
 import { Logo } from "@/components/shared/Logo";
+import { hashPassword } from "@/lib/bcript";
 import {
   registerSchema,
   type RegisterSchemaValue,
 } from "@/schema/registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "convex/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { api } from "../../../convex/_generated/api";
-import { useMutation } from "convex/react";
-import { hashPassword } from "@/lib/bcript";
 
 const RegisterPage = () => {
   const registerForm = useForm<RegisterSchemaValue>({
     resolver: zodResolver(registerSchema),
   });
-
-  const pelanggan = useMutation(api.tables.pelanggan.createPelanggan);
+  const createUser = useMutation(api.tables.user.createUser);
+  const navigate = useRouter();
 
   const handleSubmitForm = async ({
     username,
@@ -28,15 +30,22 @@ const RegisterPage = () => {
   }: RegisterSchemaValue) => {
     try {
       const hashingPassword = await hashPassword(password);
-      await pelanggan({
+      const data = await createUser({
         username: username,
         alamat: alamat,
         nomorKwh: nomorKwh,
+        role: "user",
         email: email,
         password: hashingPassword,
       });
+      if (!data) {
+        toast.error("Email sudah terdaftar");
+      }
+      navigate.push("/login");
+        toast.success("Akun berhasil dibuat");
+
     } catch (error) {
-      console.error("Error creating pelanggan:", error);
+      console.error("Error creating user:", error);
     }
   };
   return (

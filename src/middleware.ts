@@ -1,11 +1,25 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import withAuth from "./middlewares/withauth";
+import { getToken } from "next-auth/jwt";
 
-export function middleware(request: NextRequest) {
-  // Jika user akses root "/"
-  if (request.nextUrl.pathname === "/") {
-    return NextResponse.redirect(new URL("/login", request.url));
+export async function mainMiddleware(request: NextRequest) {
+  const token = await getToken({
+    req: request,
+    secret: process.env.NEXT_AUTH_SECRET!,
+  });
+
+  if (token) {
+    const pathLimits: string[] = ["/login", "/register"];
+    if (token.role === "user" && pathLimits.includes(request.nextUrl.pathname)) {
+      const url = new URL("/dashboard", request.url);
+      return NextResponse.redirect(url);
+    }
+    if (token.role === "admin" && pathLimits.includes(request.nextUrl.pathname)) {
+      const url = new URL("/admin", request.url);
+      return NextResponse.redirect(url);
+    }
   }
-  // Default: lanjutkan request
   return NextResponse.next();
 }
+
+export default withAuth(mainMiddleware, ["/", "/admin", "/dashboard"]);

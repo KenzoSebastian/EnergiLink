@@ -13,7 +13,7 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
-import type * as tables_pelanggan from "../tables/pelanggan.js";
+import type * as tables_user from "../tables/user.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -24,7 +24,7 @@ import type * as tables_pelanggan from "../tables/pelanggan.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  "tables/pelanggan": typeof tables_pelanggan;
+  "tables/user": typeof tables_user;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,

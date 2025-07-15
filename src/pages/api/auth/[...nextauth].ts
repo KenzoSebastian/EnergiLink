@@ -30,15 +30,19 @@ export const authOptions: NextAuthOptions = {
           type: "password",
           placeholder: "Password",
         },
+        role: {
+          label: "Role",
+          type: "text",
+          placeholder: "Role",
+        },
       },
       async authorize(
-        credentials: Record<"email" | "password", string> | undefined
+        credentials: Record<"email" | "password" | "role", string>  | undefined
       ) {
         if (!credentials) return null;
         const { email, password } = credentials;
 
-        const user = { id: "1", email, password, role: "user" };
-        console.log(user);
+        const user = { id: "1", email, password, role: credentials.role };
         return user ? user : null;
       },
     }),
