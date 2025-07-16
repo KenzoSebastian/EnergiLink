@@ -5,7 +5,7 @@ type Data = {
   email?: string;
   id?: string;
   role?: string;
-}
+};
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -20,29 +20,28 @@ export const authOptions: NextAuthOptions = {
       type: "credentials",
       name: "Credentials",
       credentials: {
+        id: {
+          type: "text",
+        },
         email: {
-          label: "Email",
           type: "email",
-          placeholder: "Email",
         },
         password: {
-          label: "Password",
           type: "password",
-          placeholder: "Password",
         },
         role: {
-          label: "Role",
           type: "text",
-          placeholder: "Role",
         },
       },
       async authorize(
-        credentials: Record<"email" | "password" | "role", string>  | undefined
+        credentials:
+          | Record<"id" | "email" | "password" | "role", string>
+          | undefined
       ) {
         if (!credentials) return null;
-        const { email, password } = credentials;
+        const { id, email, password, role } = credentials;
 
-        const user = { id: "1", email, password, role: credentials.role };
+        const user = { id, email, password, role };
         return user ? user : null;
       },
     }),
@@ -64,12 +63,17 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
-    async session({ session, token } : { session: Session; token: Data }) {
+    async session({ session, token }: { session: Session; token: Data }) {
       if ("email" in token && session.user) {
         session.user.email = token.email as string;
+      }
+      if ("id" in token && session.user) {
         session.user.id = token.id as string;
+      }
+      if ("role" in token && session.user) {
         session.user.role = token.role as string;
       }
+
       return session;
     },
   },

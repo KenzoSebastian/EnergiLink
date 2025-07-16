@@ -24,7 +24,7 @@ const LoginPage = () => {
       return;
     }
     if (await verifyPassword(data.password, user.password)) {
-      signIn("credentials", { ...data, role: user.role });
+      signIn("credentials", { id: user._id, role: user.role, ...data });
     } else {
       toast.error("Email atau password salah");
       

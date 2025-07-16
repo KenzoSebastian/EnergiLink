@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { mutation } from "../_generated/server";
+import { mutation, query } from "../_generated/server";
 
 export const createUser = mutation({
   args: {
@@ -46,6 +46,19 @@ export const getUserByEmail = mutation({
         .first();
     } catch (error) {
       console.error("Error getting user by email:", error);
+    }
+  },
+});
+export const getUserById = query({
+  args: { id: v.string() },
+  handler: async (ctx, { id }) => {
+    try {
+      return await ctx.db
+        .query("user")
+        .filter((q) => q.eq(q.field("_id"), id))
+        .first();
+    } catch (error) {
+      console.error("Error getting user by id:", error);
     }
   },
 });
