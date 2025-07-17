@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const SideBar = ({
   showNav,
@@ -9,6 +10,13 @@ const SideBar = ({
   showNav: boolean;
   setShowNav: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const { pathname } = useRouter();
+  const [activePage, setActivePage] = useState<string>("");
+
+  useEffect(() => {
+    setActivePage(pathname);
+  }, [pathname]);
+
   return (
     <div>
       <div
@@ -32,33 +40,48 @@ const SideBar = ({
         </div>
         <nav className="pt-10 flex flex-col flex-1 justify-between">
           <ul className="flex flex-col">
-            <li className="hover:bg-blue-700 ">
+            <li className={`transition-all ${activePage === "/admin" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
               <Link className="px-5 py-3 inline-block w-full" href="/admin">
                 Dashboard
               </Link>
             </li>
-            <li className="hover:bg-blue-700 ">
-              <Link className="px-5 py-3 inline-block w-full" href="/admin/pelanggan">
+            <li className={`transition-all ${activePage === "/admin/pelanggan" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
+              <Link
+                className="px-5 py-3 inline-block w-full"
+                href="/admin/pelanggan"
+              >
                 Pelanggan
               </Link>
             </li>
-            <li className="hover:bg-blue-700 ">
-              <Link className="px-5 py-3 inline-block w-full" href="/admin/penggunaan">
+            <li className={`transition-all ${activePage === "/admin/penggunaan" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
+              <Link
+                className="px-5 py-3 inline-block w-full"
+                href="/admin/penggunaan"
+              >
                 pengunaan
               </Link>
             </li>
-            <li className="hover:bg-blue-700 ">
-              <Link className="px-5 py-3 inline-block w-full" href="/admin/tagihan">
+            <li className={`transition-all ${activePage === "/admin/tagihan" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
+              <Link
+                className="px-5 py-3 inline-block w-full"
+                href="/admin/tagihan"
+              >
                 Tagihan
               </Link>
             </li>
-            <li className="hover:bg-blue-700 ">
-              <Link className="px-5 py-3 inline-block w-full" href="/admin/laporan">
+            <li className={`transition-all ${activePage === "/admin/laporan" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
+              <Link
+                className="px-5 py-3 inline-block w-full"
+                href="/admin/laporan"
+              >
                 Laporan
               </Link>
             </li>
-            <li className="hover:bg-blue-700 ">
-              <Link className="px-5 py-3 inline-block w-full" href="/admin/pengaturan">
+            <li className={`transition-all ${activePage === "/admin/pengaturan" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
+              <Link
+                className="px-5 py-3 inline-block w-full"
+                href="/admin/pengaturan"
+              >
                 Pengaturan
               </Link>
             </li>

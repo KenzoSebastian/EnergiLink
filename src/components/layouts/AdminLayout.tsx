@@ -1,18 +1,26 @@
-import React from 'react'
-import SideBar from '../shared/SideBar';
-import Hamburger from '../shared/Hamburger';
-import { Button } from '../ui/button';
-import { signOut } from 'next-auth/react';
+import { useState } from "react";
+import SideBar from "../shared/SideBar";
+import Hamburger from "../shared/Hamburger";
+import { Button } from "../ui/button";
+import { signOut, useSession } from "next-auth/react";
+import { useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 type AdminLayoutProps = {
-  children: React.ReactNode
-  showNav: boolean;
-  setShowNav: React.Dispatch<React.SetStateAction<boolean>>;
-  textHeader: string
-  userName?: string | undefined
-}
+  children: React.ReactNode;
+  textHeader: string;
+};
 
-const AdminLayout = ({ children, showNav, setShowNav, textHeader, userName }: AdminLayoutProps) => {
+const AdminLayout = ({
+  children,
+  textHeader,
+}: AdminLayoutProps) => {
+  const [showNav, setShowNav] = useState<boolean>(false);
+  const { data } = useSession();
+  const getUser = useQuery(api.tables.user.getUserById, {
+    id: data?.user?.id,
+  });
+
   return (
     <div className="flex">
       {/* <!-- Sidebar --> */}
@@ -30,7 +38,7 @@ const AdminLayout = ({ children, showNav, setShowNav, textHeader, userName }: Ad
 
           <div className="items-center sm:gap-3 gap-1.5 flex">
             <span className="text-gray-600 text-sm sm:text-base truncate max-w-22 capitalize">
-              {userName || "Loading..."}
+              {getUser?.username || "Loading..."}
             </span>
             <Button
               variant={"destructive"}
@@ -47,6 +55,6 @@ const AdminLayout = ({ children, showNav, setShowNav, textHeader, userName }: Ad
       </div>
     </div>
   );
-}
+};
 
-export default AdminLayout
+export default AdminLayout;
