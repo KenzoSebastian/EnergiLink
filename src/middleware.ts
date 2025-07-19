@@ -22,4 +22,8 @@ export async function mainMiddleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-export default withAuth(mainMiddleware, ["/", "/admin", "/dashboard"]);
+export default withAuth(mainMiddleware, [
+  "/",
+  "/admin",
+  "/dashboard",
+]);

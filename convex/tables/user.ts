@@ -1,4 +1,5 @@
 import { v } from "convex/values";
+import { Id } from "../_generated/dataModel";
 import { mutation, query } from "../_generated/server";
 
 export const createUser = mutation({
@@ -59,6 +60,50 @@ export const getUserById = query({
         .first();
     } catch (error) {
       console.error("Error getting user by id:", error);
+    }
+  },
+});
+
+export const getAllUser = query({
+  handler: async (ctx) => {
+    try {
+      return await ctx.db
+        .query("user")
+        .filter((q) => q.eq(q.field("role"), "user"))
+        .collect();
+    } catch (error) {
+      console.error("Error getting user by email:", error);
+    }
+  },
+});
+
+export const deleteUsers = mutation({
+  args: { idArray: v.array(v.string()) },
+  handler: async (ctx, { idArray }) => {
+    try {
+      // 1. Filter hanya ID yang valid
+      const validIds = idArray
+        .map((idString): Id<"user"> | null => {
+          try {
+            return ctx.db.normalizeId("user", idString);
+          } catch (e) {
+            console.error(`Invalid ID: ${idString}`, e);
+            return null;
+          }
+        })
+        .filter((id): id is Id<"user"> => id !== null);
+
+      if (validIds.length === 0) {
+        return { success: false, message: "No valid user IDs provided." };
+      }
+
+      const deletePromises = validIds.map((id) => ctx.db.delete(id));
+      await Promise.all(deletePromises);
+
+      return { success: true, deletedCount: validIds.length };
+    } catch (error) {
+      console.error("Error deleting users:", error);
+      return { success: false, message: "An error occurred during deletion." };
     }
   },
 });

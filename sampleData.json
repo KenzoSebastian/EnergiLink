@@ -1,0 +1,762 @@
+[
+  {
+    "alamat": "Jl. Pahlawan No. 78",
+    "email": "agus.hidayat@example.com",
+    "nomorKwh": 582194736251,
+    "password": "$2b$10$aBcDeFgHiJkLmNoPqRsTuVwXyZaBcDeFgHiJkLmNoPqRsTuVwXyZ.",
+    "role": "user",
+    "username": "Agus Hidayat"
+  },
+  {
+    "alamat": "Jl. Gatot Subroto No. 112",
+    "email": "dewi.lestari@example.com",
+    "nomorKwh": 891234765098,
+    "password": "$2b$10$bCdEfGhIjKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzA.",
+    "role": "user",
+    "username": "Dewi Lestari"
+  },
+  {
+    "alamat": "Jl. Diponegoro No. 34",
+    "email": "eko.prasetyo@example.com",
+    "nomorKwh": 753981246057,
+    "password": "$2b$10$cDeFgHiJkLmNoPqRsTuVwXyZaBcDeFgHiJkLmNoPqRsTuVwXyZb.",
+    "role": "user",
+    "username": "Eko Prasetyo"
+  },
+  {
+    "alamat": "Jl. Gajah Mada No. 91",
+    "email": "fitri.handayani@example.com",
+    "nomorKwh": 642871953046,
+    "password": "$2b$10$dEfGhIjKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzC.",
+    "role": "user",
+    "username": "Fitri Handayani"
+  },
+  {
+    "alamat": "Jl. Imam Bonjol No. 56",
+    "email": "hendra.wibowo@example.com",
+    "nomorKwh": 198765432109,
+    "password": "$2b$10$eFgHiJkLmNoPqRsTuVwXyZaBcDeFgHiJkLmNoPqRsTuVwXyZd.",
+    "role": "user",
+    "username": "Hendra Wibowo"
+  },
+  {
+    "alamat": "Jl. Kartini No. 23",
+    "email": "indah.sari@example.com",
+    "nomorKwh": 432109876543,
+    "password": "$2b$10$fGhIjKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzD.",
+    "role": "user",
+    "username": "Indah Sari"
+  },
+  {
+    "alamat": "Jl. Ahmad Yani No. 145",
+    "email": "joko.nugroho@example.com",
+    "nomorKwh": 987654321098,
+    "password": "$2b$10$gHiJkLmNoPqRsTuVwXyZaBcDeFgHiJkLmNoPqRsTuVwXyZe.",
+    "role": "user",
+    "username": "Joko Nugroho"
+  },
+  {
+    "alamat": "Jl. Sisingamangaraja No. 88",
+    "email": "kartika.putri@example.com",
+    "nomorKwh": 210987654321,
+    "password": "$2b$10$hIjKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzE.",
+    "role": "user",
+    "username": "Kartika Putri"
+  },
+  {
+    "alamat": "Jl. Hayam Wuruk No. 201",
+    "email": "muhammad.kurniawan@example.com",
+    "nomorKwh": 543210987654,
+    "password": "$2b$10$iJkLmNoPqRsTuVwXyZaBcDeFgHiJkLmNoPqRsTuVwXyZf.",
+    "role": "user",
+    "username": "Muhammad Kurniawan"
+  },
+  {
+    "alamat": "Jl. Asia Afrika No. 17",
+    "email": "nur.wati@example.com",
+    "nomorKwh": 876543210987,
+    "password": "$2b$10$jKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzF.",
+    "role": "user",
+    "username": "Nur Wati"
+  },
+  {
+    "alamat": "Jl. Cendrawasih No. 65",
+    "email": "putra.setiawan@example.com",
+    "nomorKwh": 321098765432,
+    "password": "$2b$10$kLmNoPqRsTuVwXyZaBcDeFgHiJkLmNoPqRsTuVwXyZg.",
+    "role": "user",
+    "username": "Putra Setiawan"
+  },
+  {
+    "alamat": "Jl. Kenanga No. 42",
+    "email": "rina.rahayu@example.com",
+    "nomorKwh": 654321098765,
+    "password": "$2b$10$lMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzG.",
+    "role": "user",
+    "username": "Rina Rahayu"
+  },
+  {
+    "alamat": "Jl. Melati No. 199",
+    "email": "surya.wijaya@example.com",
+    "nomorKwh": 109876543210,
+    "password": "$2b$10$mNoPqRsTuVwXyZaBcDeFgHiJkLmNoPqRsTuVwXyZh.",
+    "role": "user",
+    "username": "Surya Wijaya"
+  },
+  {
+    "alamat": "Jl. Anggrek No. 8",
+    "email": "tri.puspita@example.com",
+    "nomorKwh": 432109876543,
+    "password": "$2b$10$nOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzH.",
+    "role": "user",
+    "username": "Tri Puspita"
+  },
+  {
+    "alamat": "Jl. Kamboja No. 37",
+    "email": "wahyu.susanto@example.com",
+    "nomorKwh": 765432109876,
+    "password": "$2b$10$oPqRsTuVwXyZaBcDeFgHiJkLmNoPqRsTuVwXyZi.",
+    "role": "user",
+    "username": "Wahyu Susanto"
+  },
+  {
+    "alamat": "Jl. Mawar No. 154",
+    "email": "yuni.mardiana@example.com",
+    "nomorKwh": 210987654321,
+    "password": "$2b$10$pQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzI.",
+    "role": "user",
+    "username": "Yuni Mardiana"
+  },
+  {
+    "alamat": "Jl. Flamboyan No. 121",
+    "email": "zainal.gunawan@example.com",
+    "nomorKwh": 543210987654,
+    "password": "$2b$10$qRsTuVwXyZaBcDeFgHiJkLmNoPqRsTuVwXyZj.",
+    "role": "user",
+    "username": "Zainal Gunawan"
+  },
+  {
+    "alamat": "Jl. Dahlia No. 76",
+    "email": "ani.novitasari@example.com",
+    "nomorKwh": 876543210987,
+    "password": "$2b$10$rStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzJ.",
+    "role": "user",
+    "username": "Ani Novitasari"
+  },
+  {
+    "alamat": "Jl. Seruni No. 53",
+    "email": "rudi.kusuma@example.com",
+    "nomorKwh": 321098765432,
+    "password": "$2b$10$sTuVwXyZaBcDeFgHiJkLmNoPqRsTuVwXyZk.",
+    "role": "user",
+    "username": "Rudi Kusuma"
+  },
+  {
+    "alamat": "Jl. Teratai No. 188",
+    "email": "lina.hasan@example.com",
+    "nomorKwh": 654321098765,
+    "password": "$2b$10$tUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzK.",
+    "role": "user",
+    "username": "Lina Hasan"
+  },
+  {
+    "alamat": "Jl. Merdeka No. 1",
+    "email": "dedi.abdullah@example.com",
+    "nomorKwh": 109876543210,
+    "password": "$2b$10$uVwXyZaBcDeFgHiJkLmNoPqRsTuVwXyZl.",
+    "role": "user",
+    "username": "Dedi Abdullah"
+  },
+  {
+    "alamat": "Jl. Sudirman No. 200",
+    "email": "maya.patel@example.com",
+    "nomorKwh": 432109876543,
+    "password": "$2b$10$vWxYzAbCdEfGhIjKlMnOpQrStUvWxYzL.",
+    "role": "user",
+    "username": "Maya Patel"
+  },
+  {
+    "alamat": "Jl. Pahlawan No. 13",
+    "email": "fajar.santoso@example.com",
+    "nomorKwh": 765432109876,
+    "password": "$2b$10$wXyZaBcDeFgHiJkLmNoPqRsTuVwXyZ_.",
+    "role": "user",
+    "username": "Fajar Santoso"
+  },
+  {
+    "alamat": "Jl. Diponegoro No. 89",
+    "email": "gita.aminah@example.com",
+    "nomorKwh": 210987654321,
+    "password": "$2b$10$xYzAbCdEfGhIjKlMnOpQrStUvWxYzAa.",
+    "role": "user",
+    "username": "Gita Aminah"
+  },
+  {
+    "alamat": "Jl. Gajah Mada No. 167",
+    "email": "iwan.prasetyo@example.com",
+    "nomorKwh": 543210987654,
+    "password": "$2b$10$yZaBcDeFgHiJkLmNoPqRsTuVwXyZAb.",
+    "role": "user",
+    "username": "Iwan Prasetyo"
+  },
+  {
+    "alamat": "Jl. Imam Bonjol No. 99",
+    "email": "lia.lestari@example.com",
+    "nomorKwh": 876543210987,
+    "password": "$2b$10$zAbCdEfGhIjKlMnOpQrStUvWxYzAc.",
+    "role": "user",
+    "username": "Lia Lestari"
+  },
+  {
+    "alamat": "Jl. Kartini No. 48",
+    "email": "nanda.wibowo@example.com",
+    "nomorKwh": 321098765432,
+    "password": "$2b$10$AbCdEfGhIjKlMnOpQrStUvWxYzAd.",
+    "role": "user",
+    "username": "Nanda Wibowo"
+  },
+  {
+    "alamat": "Jl. Ahmad Yani No. 133",
+    "email": "ratna.handayani@example.com",
+    "nomorKwh": 654321098765,
+    "password": "$2b$10$bCdEfGhIjKlMnOpQrStUvWxYzAe.",
+    "role": "user",
+    "username": "Ratna Handayani"
+  },
+  {
+    "alamat": "Jl. Gatot Subroto No. 62",
+    "email": "budi.nugroho@example.com",
+    "nomorKwh": 109876543210,
+    "password": "$2b$10$cDeFgHiJkLmNoPqRsTuVwXyZAf.",
+    "role": "user",
+    "username": "Budi Nugroho"
+  },
+  {
+    "alamat": "Jl. Sisingamangaraja No. 176",
+    "email": "siti.sari@example.com",
+    "nomorKwh": 432109876543,
+    "password": "$2b$10$dEfGhIjKlMnOpQrStUvWxYzAg.",
+    "role": "user",
+    "username": "Siti Sari"
+  },
+  {
+    "alamat": "Jl. Hayam Wuruk No. 5",
+    "email": "agus.putri@example.com",
+    "nomorKwh": 765432109876,
+    "password": "$2b$10$eFgHiJkLmNoPqRsTuVwXyZAh.",
+    "role": "user",
+    "username": "Agus Putri"
+  },
+  {
+    "alamat": "Jl. Asia Afrika No. 119",
+    "email": "dewi.kurniawan@example.com",
+    "nomorKwh": 210987654321,
+    "password": "$2b$10$fGhIjKlMnOpQrStUvWxYzAi.",
+    "role": "user",
+    "username": "Dewi Kurniawan"
+  },
+  {
+    "alamat": "Jl. Cendrawasih No. 83",
+    "email": "eko.wati@example.com",
+    "nomorKwh": 543210987654,
+    "password": "$2b$10$gHiJkLmNoPqRsTuVwXyZaj.",
+    "role": "user",
+    "username": "Eko Wati"
+  },
+  {
+    "alamat": "Jl. Kenanga No. 147",
+    "email": "fitri.setiawan@example.com",
+    "nomorKwh": 876543210987,
+    "password": "$2b$10$hIjKlMnOpQrStUvWxYzAak.",
+    "role": "user",
+    "username": "Fitri Setiawan"
+  },
+  {
+    "alamat": "Jl. Melati No. 29",
+    "email": "hendra.rahayu@example.com",
+    "nomorKwh": 321098765432,
+    "password": "$2b$10$iJkLmNoPqRsTuVwXyZAl.",
+    "role": "user",
+    "username": "Hendra Rahayu"
+  },
+  {
+    "alamat": "Jl. Anggrek No. 111",
+    "email": "indah.wijaya@example.com",
+    "nomorKwh": 654321098765,
+    "password": "$2b$10$jKlMnOpQrStUvWxYzAm.",
+    "role": "user",
+    "username": "Indah Wijaya"
+  },
+  {
+    "alamat": "Jl. Kamboja No. 71",
+    "email": "joko.puspita@example.com",
+    "nomorKwh": 109876543210,
+    "password": "$2b$10$kLmNoPqRsTuVwXyZAn.",
+    "role": "user",
+    "username": "Joko Puspita"
+  },
+  {
+    "alamat": "Jl. Mawar No. 182",
+    "email": "kartika.susanto@example.com",
+    "nomorKwh": 432109876543,
+    "password": "$2b$10$lMnOpQrStUvWxYzAo.",
+    "role": "user",
+    "username": "Kartika Susanto"
+  },
+  {
+    "alamat": "Jl. Flamboyan No. 13",
+    "email": "muhammad.mardiana@example.com",
+    "nomorKwh": 765432109876,
+    "password": "$2b$10$mNoPqRsTuVwXyZAp.",
+    "role": "user",
+    "username": "Muhammad Mardiana"
+  },
+  {
+    "alamat": "Jl. Dahlia No. 190",
+    "email": "nur.gunawan@example.com",
+    "nomorKwh": 210987654321,
+    "password": "$2b$10$nOpQrStUvWxYzAq.",
+    "role": "user",
+    "username": "Nur Gunawan"
+  },
+  {
+    "alamat": "Jl. Seruni No. 96",
+    "email": "putra.novitasari@example.com",
+    "nomorKwh": 543210987654,
+    "password": "$2b$10$oPqRsTuVwXyZAr.",
+    "role": "user",
+    "username": "Putra Novitasari"
+  },
+  {
+    "alamat": "Jl. Teratai No. 44",
+    "email": "rina.kusuma@example.com",
+    "nomorKwh": 876543210987,
+    "password": "$2b$10$pQrStUvWxYzAs.",
+    "role": "user",
+    "username": "Rina Kusuma"
+  },
+  {
+    "alamat": "Jl. Merdeka No. 150",
+    "email": "surya.hasan@example.com",
+    "nomorKwh": 321098765432,
+    "password": "$2b$10$qRsTuVwXyZAt.",
+    "role": "user",
+    "username": "Surya Hasan"
+  },
+  {
+    "alamat": "Jl. Sudirman No. 73",
+    "email": "tri.abdullah@example.com",
+    "nomorKwh": 654321098765,
+    "password": "$2b$10$rStUvWxYzAu.",
+    "role": "user",
+    "username": "Tri Abdullah"
+  },
+  {
+    "alamat": "Jl. Pahlawan No. 25",
+    "email": "wahyu.patel@example.com",
+    "nomorKwh": 109876543210,
+    "password": "$2b$10$sTuVwXyZAv.",
+    "role": "user",
+    "username": "Wahyu Patel"
+  },
+  {
+    "alamat": "Jl. Diponegoro No. 117",
+    "email": "yuni.santoso@example.com",
+    "nomorKwh": 432109876543,
+    "password": "$2b$10$tUvWxYzAw.",
+    "role": "user",
+    "username": "Yuni Santoso"
+  },
+  {
+    "alamat": "Jl. Gajah Mada No. 81",
+    "email": "zainal.aminah@example.com",
+    "nomorKwh": 765432109876,
+    "password": "$2b$10$uVwXyZAx.",
+    "role": "user",
+    "username": "Zainal Aminah"
+  },
+  {
+    "alamat": "Jl. Imam Bonjol No. 164",
+    "email": "ani.prasetyo@example.com",
+    "nomorKwh": 210987654321,
+    "password": "$2b$10$vWxYzAy.",
+    "role": "user",
+    "username": "Ani Prasetyo"
+  },
+  {
+    "alamat": "Jl. Kartini No. 2",
+    "email": "rudi.lestari@example.com",
+    "nomorKwh": 543210987654,
+    "password": "$2b$10$wXyZAz.",
+    "role": "user",
+    "username": "Rudi Lestari"
+  },
+  {
+    "alamat": "Jl. Ahmad Yani No. 195",
+    "email": "lina.wibowo@example.com",
+    "nomorKwh": 876543210987,
+    "password": "$2b$10$xYzAB.",
+    "role": "user",
+    "username": "Lina Wibowo"
+  },
+  {
+    "alamat": "Jl. Gatot Subroto No. 33",
+    "email": "dedi.handayani@example.com",
+    "nomorKwh": 321098765432,
+    "password": "$2b$10$yZAC.",
+    "role": "user",
+    "username": "Dedi Handayani"
+  },
+  {
+    "alamat": "Jl. Sisingamangaraja No. 128",
+    "email": "maya.nugroho@example.com",
+    "nomorKwh": 654321098765,
+    "password": "$2b$10$zAD.",
+    "role": "user",
+    "username": "Maya Nugroho"
+  },
+  {
+    "alamat": "Jl. Hayam Wuruk No. 22",
+    "email": "fajar.sari@example.com",
+    "nomorKwh": 109876543210,
+    "password": "$2b$10$AE.",
+    "role": "user",
+    "username": "Fajar Sari"
+  },
+  {
+    "alamat": "Jl. Asia Afrika No. 140",
+    "email": "gita.hidayat@example.com",
+    "nomorKwh": 432109876543,
+    "password": "$2b$10$AF.",
+    "role": "user",
+    "username": "Gita Hidayat"
+  },
+  {
+    "alamat": "Jl. Cendrawasih No. 9",
+    "email": "iwan.putri@example.com",
+    "nomorKwh": 765432109876,
+    "password": "$2b$10$AG.",
+    "role": "user",
+    "username": "Iwan Putri"
+  },
+  {
+    "alamat": "Jl. Kenanga No. 173",
+    "email": "lia.kurniawan@example.com",
+    "nomorKwh": 210987654321,
+    "password": "$2b$10$AH.",
+    "role": "user",
+    "username": "Lia Kurniawan"
+  },
+  {
+    "alamat": "Jl. Melati No. 51",
+    "email": "nanda.wati@example.com",
+    "nomorKwh": 543210987654,
+    "password": "$2b$10$AI.",
+    "role": "user",
+    "username": "Nanda Wati"
+  },
+  {
+    "alamat": "Jl. Anggrek No. 129",
+    "email": "ratna.setiawan@example.com",
+    "nomorKwh": 876543210987,
+    "password": "$2b$10$AJ.",
+    "role": "user",
+    "username": "Ratna Setiawan"
+  },
+  {
+    "alamat": "Jl. Kamboja No. 1",
+    "email": "budi.rahayu@example.com",
+    "nomorKwh": 321098765432,
+    "password": "$2b$10$AK.",
+    "role": "user",
+    "username": "Budi Rahayu"
+  },
+  {
+    "alamat": "Jl. Mawar No. 100",
+    "email": "siti.wijaya@example.com",
+    "nomorKwh": 654321098765,
+    "password": "$2b$10$AL.",
+    "role": "user",
+    "username": "Siti Wijaya"
+  },
+  {
+    "alamat": "Jl. Flamboyan No. 67",
+    "email": "agus.puspita@example.com",
+    "nomorKwh": 109876543210,
+    "password": "$2b$10$AM.",
+    "role": "user",
+    "username": "Agus Puspita"
+  },
+  {
+    "alamat": "Jl. Dahlia No. 183",
+    "email": "dewi.susanto@example.com",
+    "nomorKwh": 432109876543,
+    "password": "$2b$10$AN.",
+    "role": "user",
+    "username": "Dewi Susanto"
+  },
+  {
+    "alamat": "Jl. Seruni No. 39",
+    "email": "eko.mardiana@example.com",
+    "nomorKwh": 765432109876,
+    "password": "$2b$10$AO.",
+    "role": "user",
+    "username": "Eko Mardiana"
+  },
+  {
+    "alamat": "Jl. Teratai No. 115",
+    "email": "fitri.gunawan@example.com",
+    "nomorKwh": 210987654321,
+    "password": "$2b$10$AP.",
+    "role": "user",
+    "username": "Fitri Gunawan"
+  },
+  {
+    "alamat": "Jl. Merdeka No. 66",
+    "email": "hendra.novitasari@example.com",
+    "nomorKwh": 543210987654,
+    "password": "$2b$10$AQ.",
+    "role": "user",
+    "username": "Hendra Novitasari"
+  },
+  {
+    "alamat": "Jl. Sudirman No. 192",
+    "email": "indah.kusuma@example.com",
+    "nomorKwh": 876543210987,
+    "password": "$2b$10$AR.",
+    "role": "user",
+    "username": "Indah Kusuma"
+  },
+  {
+    "alamat": "Jl. Pahlawan No. 58",
+    "email": "joko.hasan@example.com",
+    "nomorKwh": 321098765432,
+    "password": "$2b$10$AS.",
+    "role": "user",
+    "username": "Joko Hasan"
+  },
+  {
+    "alamat": "Jl. Diponegoro No. 14",
+    "email": "kartika.abdullah@example.com",
+    "nomorKwh": 654321098765,
+    "password": "$2b$10$AT.",
+    "role": "user",
+    "username": "Kartika Abdullah"
+  },
+  {
+    "alamat": "Jl. Gajah Mada No. 122",
+    "email": "muhammad.patel@example.com",
+    "nomorKwh": 109876543210,
+    "password": "$2b$10$AU.",
+    "role": "user",
+    "username": "Muhammad Patel"
+  },
+  {
+    "alamat": "Jl. Imam Bonjol No. 84",
+    "email": "nur.santoso@example.com",
+    "nomorKwh": 432109876543,
+    "password": "$2b$10$AV.",
+    "role": "user",
+    "username": "Nur Santoso"
+  },
+  {
+    "alamat": "Jl. Kartini No. 40",
+    "email": "putra.aminah@example.com",
+    "nomorKwh": 765432109876,
+    "password": "$2b$10$AW.",
+    "role": "user",
+    "username": "Putra Aminah"
+  },
+  {
+    "alamat": "Jl. Ahmad Yani No. 160",
+    "email": "rina.prasetyo@example.com",
+    "nomorKwh": 210987654321,
+    "password": "$2b$10$AX.",
+    "role": "user",
+    "username": "Rina Prasetyo"
+  },
+  {
+    "alamat": "Jl. Gatot Subroto No. 101",
+    "email": "surya.lestari@example.com",
+    "nomorKwh": 543210987654,
+    "password": "$2b$10$AY.",
+    "role": "user",
+    "username": "Surya Lestari"
+  },
+  {
+    "alamat": "Jl. Sisingamangaraja No. 11",
+    "email": "tri.wibowo@example.com",
+    "nomorKwh": 876543210987,
+    "password": "$2b$10$AZ.",
+    "role": "user",
+    "username": "Tri Wibowo"
+  },
+  {
+    "alamat": "Jl. Hayam Wuruk No. 187",
+    "email": "wahyu.handayani@example.com",
+    "nomorKwh": 321098765432,
+    "password": "$2b$10$BA.",
+    "role": "user",
+    "username": "Wahyu Handayani"
+  },
+  {
+    "alamat": "Jl. Asia Afrika No. 49",
+    "email": "yuni.nugroho@example.com",
+    "nomorKwh": 654321098765,
+    "password": "$2b$10$BB.",
+    "role": "user",
+    "username": "Yuni Nugroho"
+  },
+  {
+    "alamat": "Jl. Cendrawasih No. 156",
+    "email": "zainal.sari@example.com",
+    "nomorKwh": 109876543210,
+    "password": "$2b$10$BC.",
+    "role": "user",
+    "username": "Zainal Sari"
+  },
+  {
+    "alamat": "Jl. Kenanga No. 72",
+    "email": "ani.hidayat@example.com",
+    "nomorKwh": 432109876543,
+    "password": "$2b$10$BD.",
+    "role": "user",
+    "username": "Ani Hidayat"
+  },
+  {
+    "alamat": "Jl. Melati No. 168",
+    "email": "rudi.putri@example.com",
+    "nomorKwh": 765432109876,
+    "password": "$2b$10$BE.",
+    "role": "user",
+    "username": "Rudi Putri"
+  },
+  {
+    "alamat": "Jl. Anggrek No. 3",
+    "email": "lina.kurniawan@example.com",
+    "nomorKwh": 210987654321,
+    "password": "$2b$10$BF.",
+    "role": "user",
+    "username": "Lina Kurniawan"
+  },
+  {
+    "alamat": "Jl. Kamboja No. 90",
+    "email": "dedi.wati@example.com",
+    "nomorKwh": 543210987654,
+    "password": "$2b$10$BG.",
+    "role": "user",
+    "username": "Dedi Wati"
+  },
+  {
+    "alamat": "Jl. Mawar No. 175",
+    "email": "maya.setiawan@example.com",
+    "nomorKwh": 876543210987,
+    "password": "$2b$10$BH.",
+    "role": "user",
+    "username": "Maya Setiawan"
+  },
+  {
+    "alamat": "Jl. Flamboyan No. 27",
+    "email": "fajar.rahayu@example.com",
+    "nomorKwh": 321098765432,
+    "password": "$2b$10$BI.",
+    "role": "user",
+    "username": "Fajar Rahayu"
+  },
+  {
+    "alamat": "Jl. Dahlia No. 144",
+    "email": "gita.wijaya@example.com",
+    "nomorKwh": 654321098765,
+    "password": "$2b$10$BJ.",
+    "role": "user",
+    "username": "Gita Wijaya"
+  },
+  {
+    "alamat": "Jl. Seruni No. 87",
+    "email": "iwan.puspita@example.com",
+    "nomorKwh": 109876543210,
+    "password": "$2b$10$BK.",
+    "role": "user",
+    "username": "Iwan Puspita"
+  },
+  {
+    "alamat": "Jl. Teratai No. 12",
+    "email": "lia.susanto@example.com",
+    "nomorKwh": 432109876543,
+    "password": "$2b$10$BL.",
+    "role": "user",
+    "username": "Lia Susanto"
+  },
+  {
+    "alamat": "Jl. Merdeka No. 113",
+    "email": "nanda.mardiana@example.com",
+    "nomorKwh": 765432109876,
+    "password": "$2b$10$BM.",
+    "role": "user",
+    "username": "Nanda Mardiana"
+  },
+  {
+    "alamat": "Jl. Sudirman No. 54",
+    "email": "ratna.gunawan@example.com",
+    "nomorKwh": 210987654321,
+    "password": "$2b$10$BN.",
+    "role": "user",
+    "username": "Ratna Gunawan"
+  },
+  {
+    "alamat": "Jl. Pahlawan No. 166",
+    "email": "budi.novitasari@example.com",
+    "nomorKwh": 543210987654,
+    "password": "$2b$10$BO.",
+    "role": "user",
+    "username": "Budi Novitasari"
+  },
+  {
+    "alamat": "Jl. Diponegoro No. 30",
+    "email": "siti.kusuma@example.com",
+    "nomorKwh": 876543210987,
+    "password": "$2b$10$BP.",
+    "role": "user",
+    "username": "Siti Kusuma"
+  },
+  {
+    "alamat": "Jl. Gajah Mada No. 104",
+    "email": "agus.hasan@example.com",
+    "nomorKwh": 321098765432,
+    "password": "$2b$10$BQ.",
+    "role": "user",
+    "username": "Agus Hasan"
+  },
+  {
+    "alamat": "Jl. Imam Bonjol No. 63",
+    "email": "dewi.abdullah@example.com",
+    "nomorKwh": 654321098765,
+    "password": "$2b$10$BR.",
+    "role": "user",
+    "username": "Dewi Abdullah"
+  },
+  {
+    "alamat": "Jl. Kartini No. 177",
+    "email": "eko.patel@example.com",
+    "nomorKwh": 109876543210,
+    "password": "$2b$10$BS.",
+    "role": "user",
+    "username": "Eko Patel"
+  },
+  {
+    "alamat": "Jl. Ahmad Yani No. 19",
+    "email": "fitri.santoso@example.com",
+    "nomorKwh": 123456789012,
+    "password": "$2b$10$Y1JqN2sX8zC5pA3bE9fG2u",
+    "role": "user",
+    "username": "Fitri Santoso"
+  },
+  {
+    "alamat": "Jl. Sudirman No. 80",
+    "email": "budi.aminah@example.com",
+    "nomorKwh": 987654321012,
+    "password": "$2b$10$K7dLpWqZ0vR9sT4uI2oA1e",
+    "role": "user",
+    "username": "Budi Aminah"
+  }
+]

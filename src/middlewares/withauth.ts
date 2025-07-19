@@ -14,7 +14,8 @@ export default function withAuth(
   const adminLimits: string[] = ["/", "/dashboard"];
   return async (request: NextRequest, next: NextFetchEvent) => {
     const pathname = request.nextUrl.pathname;
-    if (requireAuth.includes(pathname)) {
+    const firstSegment = pathname.split("/")[1];
+    if (requireAuth.includes(`/${firstSegment}`)) {
       const token = await getToken({
         req: request,
         secret: process.env.NEXT_AUTH_SECRET!,

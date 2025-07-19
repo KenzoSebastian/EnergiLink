@@ -17,8 +17,9 @@ const AdminLayout = ({
 }: AdminLayoutProps) => {
   const [showNav, setShowNav] = useState<boolean>(false);
   const { data } = useSession();
+  const userId = data?.user?.id;
   const getUser = useQuery(api.tables.user.getUserById, {
-    id: data?.user?.id,
+    id: userId || "",
   });
 
   return (
@@ -26,7 +27,7 @@ const AdminLayout = ({
       {/* <!-- Sidebar --> */}
       <SideBar showNav={showNav} setShowNav={setShowNav} />
       {/* <!-- Main Content --> */}
-      <div className="flex-1 py-6 px-3 md:px-6 md:ml-64 min-h-screen bg-stone-100">
+      <div className="flex-1 py-6 px-3 md:px-6 md:ml-64 min-h-screen overflow-hidden bg-stone-100">
         <header className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-1">
             <Hamburger setStatus={setShowNav} status={showNav} />

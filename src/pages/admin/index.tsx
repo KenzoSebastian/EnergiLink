@@ -1,27 +1,28 @@
 import AdminLayout from "@/components/layouts/AdminLayout";
+import { useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 const AdminPage = () => {
+  const dataPelanggan = useQuery(api.tables.user.getAllUser);
   return (
-    <AdminLayout
-      textHeader="Admin Dashboard"
-    >
+    <AdminLayout textHeader="Admin Dashboard">
       {/* Kartu Statistik Utama */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white p-4 shadow rounded-lg">
-          <h3 className="text-gray-600">Total Pelanggan</h3>
-          <p className="text-gray-800 text-2xl">2500</p>
+        <div className="bg-blue-400 p-4 shadow rounded-lg">
+          <h3 className="">Total Pelanggan</h3>
+          <p className="font-semibold text-2xl">{dataPelanggan?.length || 0}</p>
         </div>
-        <div className="bg-white p-4 shadow rounded-lg">
-          <h3 className="text-gray-600">Tagihan Belum Lunas</h3>
-          <p className="text-gray-800 text-2xl">123.50</p>
+        <div className="bg-red-400 p-4 shadow rounded-lg">
+          <h3 className="">Tagihan Belum Lunas</h3>
+          <p className="font-semibold text-2xl">123.50</p>
         </div>
-        <div className="bg-white p-4 shadow rounded-lg">
-          <h3 className="text-gray-600">Pendapatan Bulan Ini</h3>
-          <p className="text-gray-800 text-2xl">1,805</p>
+        <div className="bg-emerald-400 p-4 shadow rounded-lg">
+          <h3 className="">Pendapatan Bulan Ini</h3>
+          <p className="font-semibold text-2xl">1,805</p>
         </div>
-        <div className="bg-white p-4 shadow rounded-lg">
-          <h3 className="text-gray-600">Pelanggan Baru</h3>
-          <p className="text-gray-800 text-2xl">54</p>
+        <div className="bg-yellow-400 p-4 shadow rounded-lg">
+          <h3 className="">Pelanggan Baru</h3>
+          <p className="font-semibold text-2xl">54</p>
         </div>
       </div>
 
