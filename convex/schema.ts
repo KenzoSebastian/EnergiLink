@@ -10,4 +10,9 @@ export default defineSchema({
     email: v.string(),
     password: v.string(),
   }),
+  tarif: defineTable({
+    namaTarif: v.string(),
+    daya: v.number(),
+    harga: v.number(),
+  }),
 });

@@ -23,8 +23,8 @@ import { useMutation } from "convex/react";
 import { Info, MoreHorizontal, Trash } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { api } from "../../../convex/_generated/api";
-import { type dataPelangganType } from "./TablePelanggan";
+import { api } from "../../../../convex/_generated/api";
+import { dataPelangganType } from "./TablePelanggan";
 
 const ActionDropDown = ({ row }: { row: Row<dataPelangganType> }) => {
   const deleteUser = useMutation(api.tables.user.deleteUsers);
@@ -75,7 +75,7 @@ const ActionDropDown = ({ row }: { row: Row<dataPelangganType> }) => {
                     </tr>
                     <tr>
                       <td className="py-2">Email</td>
-                      <td className="px-2 py-2">:</td>
+                      <td className="px-2 py-2">:</td>9
                       <td className="py-2">{row.getValue("email")}</td>
                     </tr>
                     <tr>

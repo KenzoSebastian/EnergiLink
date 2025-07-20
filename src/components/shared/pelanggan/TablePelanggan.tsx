@@ -45,41 +45,8 @@ import {
 } from "@/components/ui/table";
 import { useMutation } from "convex/react";
 import { toast } from "sonner";
-import { api } from "../../../convex/_generated/api";
+import { api } from "../../../../convex/_generated/api";
 import ActionDropDown from "./ActionDropDown";
-
-// const data: Payment[] = [
-//   {
-//     id: "m5gr84i9",
-//     harga: 316,
-//     status: "success",
-//     email: "ken99@example.com",
-//   },
-//   {
-//     id: "3u1reuv4",
-//     harga: 242,
-//     status: "success",
-//     email: "Abe45@example.com",
-//   },
-//   {
-//     id: "derv1ws0",
-//     harga: 837,
-//     status: "processing",
-//     email: "Monserrat44@example.com",
-//   },
-//   {
-//     id: "5kma53ae",
-//     harga: 874,
-//     status: "success",
-//     email: "Silas22@example.com",
-//   },
-//   {
-//     id: "bhqecj4p",
-//     harga: 721,
-//     status: "failed",
-//     email: "carmella@example.com",
-//   },
-// ];
 
 export type dataPelangganType = {
   _id: string;
@@ -143,14 +110,14 @@ const columns: ColumnDef<dataPelangganType>[] = [
   },
   {
     accessorKey: "nomorKwh",
-    header: () => <div className="">Nomor Kwh</div>,
+    header: () => <div>Nomor Kwh</div>,
     cell: ({ row }) => {
       return <div>{row.getValue("nomorKwh")}</div>;
     },
   },
   {
     accessorKey: "alamat",
-    header: () => <div className="">Alamat</div>,
+    header: () => <div>Alamat</div>,
     cell: ({ row }) => {
       return <div>{row.getValue("alamat")}</div>;
     },

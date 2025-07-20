@@ -1,8 +1,8 @@
 import AdminLayout from "@/components/layouts/AdminLayout";
-import { TablePelanggan } from "@/components/shared/TablePelanggan";
 import { useQuery } from "convex/react";
 import { useEffect } from "react";
 import { api } from "../../../convex/_generated/api";
+import { TablePelanggan } from "@/components/shared/pelanggan/TablePelanggan";
 
 const PelangganPage = () => {
   const dataPelanggan = useQuery(api.tables.user.getAllUser);

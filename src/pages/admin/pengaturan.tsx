@@ -1,45 +1,16 @@
 import AdminLayout from "@/components/layouts/AdminLayout";
+import { TableTarif } from "@/components/shared/tarif/TableTarif";
+import { api } from "../../../convex/_generated/api";
+import { useQuery } from "convex/react";
 
 const PengaturanPage = () => {
+  const dataTarif = useQuery(api.tables.tarif.getAllTarif);
   return (
-    <AdminLayout
-      textHeader="Pengaturan"
-    >
+    <AdminLayout textHeader="Pengaturan">
       {/* Sub-menu: Manajemen Tarif Listrik */}
       <div className="mb-6">
         <h3 className="text-lg font-bold">Manajemen Tarif Listrik</h3>
-        <div className="bg-white p-4 shadow rounded-lg">
-          <table className="min-w-full">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="py-2 px-4 text-left">Kode Golongan</th>
-                <th className="py-2 px-4 text-left">Daya (Watt)</th>
-                <th className="py-2 px-4 text-left">Tarif per kWh (Rp)</th>
-                <th className="py-2 px-4 text-left">Aksi</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Contoh data tarif listrik */}
-              <tr>
-                <td className="py-2 px-4">R1/TR</td>
-                <td className="py-2 px-4">900</td>
-                <td className="py-2 px-4">1,500</td>
-                <td className="py-2 px-4">
-                  <button className="text-yellow-500">Ubah</button>
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4">R2/TR</td>
-                <td className="py-2 px-4">1300</td>
-                <td className="py-2 px-4">2,000</td>
-                <td className="py-2 px-4">
-                  <button className="text-yellow-500">Ubah</button>
-                </td>
-              </tr>
-              {/* Tambahkan baris lainnya sesuai kebutuhan */}
-            </tbody>
-          </table>
-        </div>
+        <TableTarif data={dataTarif || []} />
       </div>
 
       {/* Sub-menu: Profil Admin */}
