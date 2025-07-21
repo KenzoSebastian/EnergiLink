@@ -1,24 +1,21 @@
 import { useState } from "react";
-import SideBar from "../shared/SideBar";
 import Hamburger from "../shared/Hamburger";
 import { Button } from "../ui/button";
 import { signOut, useSession } from "next-auth/react";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
+import SideBar from "../shared/SideBar";
 
 type AdminLayoutProps = {
   children: React.ReactNode;
   textHeader: string;
 };
 
-const AdminLayout = ({
-  children,
-  textHeader,
-}: AdminLayoutProps) => {
+const AdminLayout = ({ children, textHeader }: AdminLayoutProps) => {
   const [showNav, setShowNav] = useState<boolean>(false);
   const { data } = useSession();
   const userId = data?.user?.id;
-  const getUser = useQuery(api.tables.user.getUserById, {
+  const getUser = useQuery(api.tables.user.getUserByIdQuery, {
     id: userId || "",
   });
 
@@ -51,8 +48,7 @@ const AdminLayout = ({
             </Button>
           </div>
         </header>
-
-        {children}
+        <div className="px-2 md:px-0">{children}</div>
       </div>
     </div>
   );

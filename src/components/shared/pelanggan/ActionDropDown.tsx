@@ -61,41 +61,42 @@ const ActionDropDown = ({ row }: { row: Row<dataPelangganType> }) => {
             <AlertDialogContent>
               <AlertDialogHeader>
                 <AlertDialogTitle>Detail Pelanggan</AlertDialogTitle>
-                <AlertDialogDescription>
-                  <table className="text-black">
-                    <tr>
-                      <td className="py-2">Id Pelanggan</td>
-                      <td className="px-2 py-2">:</td>
-                      <td className="py-2">{row.getValue("_id")}</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2">Username</td>
-                      <td className="px-2 py-2">:</td>
-                      <td className="py-2">{row.getValue("username")}</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2">Email</td>
-                      <td className="px-2 py-2">:</td>9
-                      <td className="py-2">{row.getValue("email")}</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2">no KWH</td>
-                      <td className="px-2 py-2">:</td>
-                      <td className="py-2">{row.getValue("nomorKwh")}</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2">pemakaian</td>
-                      <td className="px-2 py-2">:</td>
-                      <td className="py-2">1000 kWh</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2">status bayar</td>
-                      <td className="px-2 py-2">:</td>
-                      <td className="py-2">Lunas</td>
-                    </tr>
-                  </table>
-                </AlertDialogDescription>
               </AlertDialogHeader>
+              <table className="text-black">
+                <tbody>
+                  <tr>
+                    <td className="py-2">Id Pelanggan</td>
+                    <td className="px-2 py-2">:</td>
+                    <td className="py-2">{row.getValue("_id")}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2">Username</td>
+                    <td className="px-2 py-2">:</td>
+                    <td className="py-2">{row.getValue("username")}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2">Email</td>
+                    <td className="px-2 py-2">:</td>
+                    <td className="py-2">{row.getValue("email")}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2">no KWH</td>
+                    <td className="px-2 py-2">:</td>
+                    <td className="py-2">{row.getValue("nomorKwh")}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2">pemakaian</td>
+                    <td className="px-2 py-2">:</td>
+                    <td className="py-2">1000 kWh</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2">status bayar</td>
+                    <td className="px-2 py-2">:</td>
+                    <td className="py-2">Lunas</td>
+                  </tr>
+                </tbody>
+              </table>
+              <AlertDialogDescription></AlertDialogDescription>
               <AlertDialogFooter>
                 <AlertDialogCancel onClick={() => setOpen(false)}>
                   Tutup

@@ -15,4 +15,12 @@ export default defineSchema({
     daya: v.number(),
     harga: v.number(),
   }),
+  penggunaan: defineTable({
+    idPelanggan: v.id("user"),
+    idTarif: v.id("tarif"),
+    bulan: v.string(),
+    tahun: v.number(),
+    meterAwal: v.number(),
+    meterAkhir: v.number(),
+  }).index("idPelanggan_idTarif_index", ["idPelanggan", "idTarif"]),
 });

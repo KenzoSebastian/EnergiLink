@@ -1,73 +1,79 @@
 import AdminLayout from "@/components/layouts/AdminLayout";
+import FormCreatePenggunaan from "@/components/shared/penggunaan/FormCreatePenggunaan";
+import {
+  penggunaanCreateSchema,
+  type PenggunaanCreateSchemaValue,
+} from "@/schema/penggunaanCreateSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation, useQuery } from "convex/react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { api } from "../../../convex/_generated/api";
+import { Id } from "../../../convex/_generated/dataModel";
+import { useState } from "react";
 
 const PenggunaanPage = () => {
+  const [currentDate, setCurrentDate] = useState<Date>(() => new Date());
+  const [idUser, setIdUser] = useState<string | null>(null);
+  const createPenggunaan = useMutation(api.tables.penggunaan.createPenggunaan);
 
+  const getUser = useMutation(api.tables.user.getUserByIdMutation);
+  const [formKey, setFormKey] = useState(0);
+
+  const createPenggunaanForm = useForm<PenggunaanCreateSchemaValue>({
+    resolver: zodResolver(penggunaanCreateSchema),
+    defaultValues: {
+      bulan: currentDate.toLocaleString("id", {
+        month: "long",
+      }),
+      tahun: currentDate.getFullYear(),
+    },
+  });
+
+  const handleSubmitForm = async (data: PenggunaanCreateSchemaValue) => {
+    setIdUser(data.idPelanggan);
+    if (data.meterAkhir < data.meterAwal) {
+      toast.error("Meter akhir harus lebih besar dari meter awal.");
+      return;
+    }
+    try {
+      const user = await getUser({ id: data.idPelanggan as Id<"user"> });
+      if (!user) {
+        toast.error("Id Pelanggan tidak ditemukan.");
+        return;
+      }
+      await createPenggunaan({
+        idPelanggan: data.idPelanggan as Id<"user">,
+        idTarif: data.idTarif as Id<"tarif">,
+        bulan: data.bulan,
+        tahun: data.tahun,
+        meterAwal: data.meterAwal,
+        meterAkhir: data.meterAkhir,
+      });
+      toast.success("Penggunaan berhasil ditambahkan.");
+    } catch (error) {
+      console.error("Error creating penggunaan:", error);
+    }
+    createPenggunaanForm.reset({
+      bulan: currentDate.toLocaleString("id", {
+        month: "long",
+      }),
+      tahun: currentDate.getFullYear(),
+    });
+    setFormKey((prevKey) => prevKey + 1); // Update key form
+  };
   return (
-    <AdminLayout
-      textHeader="Penggunaan"
-    >
+    <AdminLayout textHeader="Penggunaan">
       {/* Sub-menu: Input Penggunaan */}
       <div className="mb-6">
-        <h3 className="text-lg font-bold">Input Penggunaan</h3>
-        <form className="bg-white p-4 shadow rounded-lg">
-          <div className="mb-4">
-            <label className="block mb-1">ID Pelanggan</label>
-            <input
-              type="text"
-              placeholder="Masukkan ID Pelanggan"
-              className="border border-gray-300 rounded-lg p-2 w-full"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block mb-1">Nama Pelanggan</label>
-            <input
-              type="text"
-              placeholder="Nama Pelanggan"
-              className="border border-gray-300 rounded-lg p-2 w-full"
-              readOnly
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block mb-1">Alamat</label>
-            <input
-              type="text"
-              placeholder="Alamat"
-              className="border border-gray-300 rounded-lg p-2 w-full"
-              readOnly
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block mb-1">Meter Bulan Lalu</label>
-            <input
-              type="text"
-              placeholder="Meter Bulan Lalu"
-              className="border border-gray-300 rounded-lg p-2 w-full"
-              readOnly
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block mb-1">Meter Bulan Ini</label>
-            <input
-              type="text"
-              placeholder="Masukkan Meter Bulan Ini"
-              className="border border-gray-300 rounded-lg p-2 w-full"
-            />
-          </div>
-          <div className="flex justify-end">
-            <button
-              type="button"
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-2"
-            >
-              Simpan & Lanjutkan
-            </button>
-            <button
-              type="button"
-              className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg"
-            >
-              Selesai
-            </button>
-          </div>
-        </form>
+        <h3 className="text-lg font-bold mb-4">Input Penggunaan</h3>
+        <FormCreatePenggunaan
+          key={formKey}
+          form={createPenggunaanForm}
+          onSubmitForm={handleSubmitForm}
+          currentDate={currentDate}
+          setCurrentDate={setCurrentDate}
+        />
       </div>
 
       {/* Sub-menu: Riwayat Penggunaan */}

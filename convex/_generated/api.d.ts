@@ -13,6 +13,7 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as tables_penggunaan from "../tables/penggunaan.js";
 import type * as tables_tarif from "../tables/tarif.js";
 import type * as tables_user from "../tables/user.js";
 
@@ -25,6 +26,7 @@ import type * as tables_user from "../tables/user.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  "tables/penggunaan": typeof tables_penggunaan;
   "tables/tarif": typeof tables_tarif;
   "tables/user": typeof tables_user;
 }>;

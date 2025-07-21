@@ -80,7 +80,6 @@ export function TableTarif({ data }: { data: dataTarifType[] }) {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4 gap-1 sm:gap-4 justify-center"></div>
       <div className="bg-white p-4 shadow rounded-lg">
         <Table>
           <TableHeader>

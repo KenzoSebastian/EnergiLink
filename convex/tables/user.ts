@@ -50,7 +50,22 @@ export const getUserByEmail = mutation({
     }
   },
 });
-export const getUserById = query({
+
+export const getUserByIdQuery = query({
+  args: { id: v.string() },
+  handler: async (ctx, { id }) => {
+    try {
+      return await ctx.db
+        .query("user")
+        .filter((q) => q.eq(q.field("_id"), id))
+        .first();
+    } catch (error) {
+      console.error("Error getting user by id:", error);
+    }
+  },
+});
+
+export const getUserByIdMutation = mutation({
   args: { id: v.string() },
   handler: async (ctx, { id }) => {
     try {
