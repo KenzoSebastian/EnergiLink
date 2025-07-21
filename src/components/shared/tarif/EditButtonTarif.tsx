@@ -8,7 +8,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger
+  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,8 +29,13 @@ import { Row } from "@tanstack/react-table";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { type dataTarifType } from "./TableTarif";
+import { useMutation } from "convex/react";
+import { api } from "../../../../convex/_generated/api";
+import { toast } from "sonner";
 
 const EditButtonTarif = ({ row }: { row: Row<dataTarifType> }) => {
+  const editTarif = useMutation(api.tables.tarif.editTarif);
+
   const editTarifForm = useForm<
     TarifEditSchemaValue,
     any,
@@ -44,10 +49,14 @@ const EditButtonTarif = ({ row }: { row: Row<dataTarifType> }) => {
   });
   const [open, setOpen] = useState<boolean>(false);
 
-  const handleEditTarif = (data: TarifEditSchemaValue) => {
-    alert(
-      `Editing Tarif: ${row.getValue("namaTarif")}\nDaya: ${data.daya}\nHarga: ${data.harga}`
-    );
+  const handleEditTarif = async (data: TarifEditSchemaValue) => {
+    try {
+      await editTarif({ ...data, id: row.getValue("_id") });
+      toast.success("Tarif berhasil diedit.");
+    } catch (error) {
+      console.error("Error editing tarif:", error);
+      toast.error("Gagal mengedit tarif.");
+    }
     setOpen(false);
   };
 
@@ -93,7 +102,7 @@ const EditButtonTarif = ({ row }: { row: Row<dataTarifType> }) => {
           </div>
           <AlertDialogDescription></AlertDialogDescription>
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => {}}>Batal</AlertDialogCancel>
+            <AlertDialogCancel onClick={() => {editTarifForm.reset()}}>Batal</AlertDialogCancel>
             <AlertDialogAction
               onClick={editTarifForm.handleSubmit(handleEditTarif)}
             >

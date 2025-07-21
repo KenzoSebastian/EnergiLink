@@ -4,7 +4,8 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
-  useReactTable
+  useReactTable,
+  VisibilityState,
 } from "@tanstack/react-table";
 
 import {
@@ -16,6 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import EditButtonTarif from "./EditButtonTarif";
+import { useState } from "react";
 
 export type dataTarifType = {
   _id: string;
@@ -25,6 +27,12 @@ export type dataTarifType = {
 };
 
 const columns: ColumnDef<dataTarifType>[] = [
+  {
+    accessorKey: "_id",
+    header: "id",
+    cell: ({ row }) => <div>{row.getValue("_id")}</div>,
+    enableHiding: true,
+  },
   {
     accessorKey: "namaTarif",
     header: "Nama Tarif",
@@ -51,16 +59,23 @@ const columns: ColumnDef<dataTarifType>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      return <EditButtonTarif row={row}/>;
+      return <EditButtonTarif row={row} />;
     },
   },
 ];
 
 export function TableTarif({ data }: { data: dataTarifType[] }) {
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
+    ["_id"]: false,
+  });
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
+    state: {
+      columnVisibility,
+    },
   });
 
   return (

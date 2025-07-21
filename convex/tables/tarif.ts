@@ -1,4 +1,5 @@
-import { query } from "../_generated/server";
+import { v } from "convex/values";
+import { mutation, query } from "../_generated/server";
 
 export const getAllTarif = query({
   handler: async (ctx) => {
@@ -9,4 +10,16 @@ export const getAllTarif = query({
       throw new Error("Failed to fetch tarif data");
     }
   },
-})
+});
+
+export const editTarif = mutation({
+  args: { id: v.id("tarif"), daya: v.number(), harga: v.number() },
+  handler: async (ctx, { id, daya, harga }) => {
+    try {
+      return await ctx.db.patch(id, { daya, harga });
+    } catch (error) {
+      console.error("Error editing tarif:", error);
+      // throw new Error("Failed to edit tarif data");
+    }
+  },
+});
