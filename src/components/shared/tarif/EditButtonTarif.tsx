@@ -8,7 +8,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
+  AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,9 +26,9 @@ import {
 } from "@/schema/tarifEditSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Row } from "@tanstack/react-table";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { type dataTarifType } from "./TableTarif";
-import { useState } from "react";
 
 const EditButtonTarif = ({ row }: { row: Row<dataTarifType> }) => {
   const editTarifForm = useForm<
@@ -42,18 +42,19 @@ const EditButtonTarif = ({ row }: { row: Row<dataTarifType> }) => {
       harga: row.getValue("harga"),
     },
   });
-  // ada error di sini
   const [open, setOpen] = useState<boolean>(false);
 
   const handleEditTarif = (data: TarifEditSchemaValue) => {
-    alert(`Editing Tarif: ${row.getValue("namaTarif")}\nDaya: ${data.daya}\nHarga: ${data.harga}`);
-    
+    alert(
+      `Editing Tarif: ${row.getValue("namaTarif")}\nDaya: ${data.daya}\nHarga: ${data.harga}`
+    );
+    setOpen(false);
   };
 
   return (
     <Form {...editTarifForm}>
-      <AlertDialog open={open} >
-        <AlertDialogTrigger className="flex items-center gap-2 w-full">
+      <AlertDialog open={open} onOpenChange={setOpen}>
+        <AlertDialogTrigger asChild>
           <Button variant="outline">Edit</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
@@ -61,38 +62,43 @@ const EditButtonTarif = ({ row }: { row: Row<dataTarifType> }) => {
             <AlertDialogTitle>
               Edit Tarif {row.getValue("namaTarif")}
             </AlertDialogTitle>
-            <AlertDialogDescription>
-              <FormField
-                control={editTarifForm.control}
-                name="daya"
-                render={({ field }) => (
-                  <FormItem className="mb-3">
-                    <FormLabel>Daya</FormLabel>
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={editTarifForm.control}
-                name="harga"
-                render={({ field }) => (
-                  <FormItem className="mb-3">
-                    <FormLabel>harga</FormLabel>
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </AlertDialogDescription>
           </AlertDialogHeader>
+          <div>
+            <FormField
+              control={editTarifForm.control}
+              name="daya"
+              render={({ field }) => (
+                <FormItem className="mb-3">
+                  <FormLabel>Daya</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={editTarifForm.control}
+              name="harga"
+              render={({ field }) => (
+                <FormItem className="mb-3">
+                  <FormLabel>harga</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <AlertDialogDescription></AlertDialogDescription>
           <AlertDialogFooter>
             <AlertDialogCancel onClick={() => {}}>Batal</AlertDialogCancel>
-            <AlertDialogAction onClick={editTarifForm.handleSubmit(handleEditTarif)}>Simpan</AlertDialogAction>
+            <AlertDialogAction
+              onClick={editTarifForm.handleSubmit(handleEditTarif)}
+            >
+              Simpan
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
