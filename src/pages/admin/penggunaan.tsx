@@ -6,16 +6,21 @@ import {
 } from "@/schema/penggunaanCreateSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery } from "convex/react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { api } from "../../../convex/_generated/api";
 import { Id } from "../../../convex/_generated/dataModel";
-import { useState } from "react";
+import {
+  dataPenggunaanType,
+  TablePenggunaan,
+} from "@/components/shared/penggunaan/TablePenggunaan";
 
 const PenggunaanPage = () => {
   const [currentDate, setCurrentDate] = useState<Date>(() => new Date());
-  const [idUser, setIdUser] = useState<string | null>(null);
+  const [data, setData] = useState<dataPenggunaanType[]>([]);
   const createPenggunaan = useMutation(api.tables.penggunaan.createPenggunaan);
+  const getAllPenggunaan = useQuery(api.tables.penggunaan.getAllPenggunaan);
 
   const getUser = useMutation(api.tables.user.getUserByIdMutation);
   const [formKey, setFormKey] = useState(0);
@@ -30,8 +35,24 @@ const PenggunaanPage = () => {
     },
   });
 
+  useEffect(() => {
+    console.log(getAllPenggunaan);
+    getAllPenggunaan?.forEach((item) => {
+      setData((prevData) => [
+        ...prevData,
+        {
+          bulan: item.bulan,
+          tahun: item.tahun,
+          meterAwal: item.meterAwal,
+          meterAkhir: item.meterAkhir,
+          totalPenggunaan: item.meterAkhir - item.meterAwal,
+          namaPelanggan: item.pelanggan!.username,
+        },
+      ]);
+    });
+  }, [getAllPenggunaan]);
+
   const handleSubmitForm = async (data: PenggunaanCreateSchemaValue) => {
-    setIdUser(data.idPelanggan);
     if (data.meterAkhir < data.meterAwal) {
       toast.error("Meter akhir harus lebih besar dari meter awal.");
       return;
@@ -79,46 +100,7 @@ const PenggunaanPage = () => {
       {/* Sub-menu: Riwayat Penggunaan */}
       <div className="mb-6">
         <h3 className="text-lg font-bold">Riwayat Penggunaan</h3>
-        <div className="flex justify-between items-center mb-4">
-          <input
-            type="text"
-            placeholder="Cari berdasarkan nama pelanggan atau periode"
-            className="border border-gray-300 rounded-lg p-2 w-1/3"
-          />
-          <select className="border border-gray-300 rounded-lg p-2 w-1/4">
-            <option value="">Filter Periode</option>
-            <option value="juli-2025">Juli 2025</option>
-            <option value="agustus-2025">Agustus 2025</option>
-          </select>
-        </div>
-
-        {/* Tabel Riwayat Penggunaan */}
-        <table className="min-w-full bg-white shadow rounded-lg">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="py-2 px-4 text-left">ID Penggunaan</th>
-              <th className="py-2 px-4 text-left">Nama Pelanggan</th>
-              <th className="py-2 px-4 text-left">Periode</th>
-              <th className="py-2 px-4 text-left">Meter Awal</th>
-              <th className="py-2 px-4 text-left">Meter Akhir</th>
-              <th className="py-2 px-4 text-left">Total Pemakaian (kWh)</th>
-              <th className="py-2 px-4 text-left">Tanggal Input</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Contoh data riwayat penggunaan */}
-            <tr>
-              <td className="py-2 px-4">001</td>
-              <td className="py-2 px-4">John Doe</td>
-              <td className="py-2 px-4">Juli 2025</td>
-              <td className="py-2 px-4">1000</td>
-              <td className="py-2 px-4">1200</td>
-              <td className="py-2 px-4">200</td>
-              <td className="py-2 px-4">01/08/2025</td>
-            </tr>
-            {/* Tambahkan baris lainnya sesuai kebutuhan */}
-          </tbody>
-        </table>
+        <TablePenggunaan data={data} />
       </div>
     </AdminLayout>
   );

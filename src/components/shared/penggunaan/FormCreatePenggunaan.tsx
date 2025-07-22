@@ -31,7 +31,7 @@ import { api } from "../../../../convex/_generated/api";
 type FormCreatePenggunaanProps = {
   form: UseFormReturn<PenggunaanCreateSchemaValue>;
   onSubmitForm: (data: PenggunaanCreateSchemaValue) => void;
-  curentDate: Date;
+  currentDate: Date;
   setCurrentDate: (date: Date) => void;
 };
 

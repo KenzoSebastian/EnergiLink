@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { mutation } from "../_generated/server";
+import { mutation, query } from "../_generated/server";
 
 export const createPenggunaan = mutation({
   args: {
@@ -25,6 +25,28 @@ export const createPenggunaan = mutation({
       });
     } catch (error) {
       console.error("Error creating penggunaan dari server:", error);
+    }
+  },
+});
+
+export const getAllPenggunaan = query({
+  handler: async ({ db }) => {
+    try {
+      const penggunaanList = await db.query("penggunaan").collect();
+      return await Promise.all(
+        penggunaanList.map(async (penggunaan) => {
+          const pelanggan = await db.get(penggunaan.idPelanggan);
+          const tarif = await db.get(penggunaan.idTarif);
+          return {
+            ...penggunaan,
+            pelanggan,
+            tarif,
+          };
+        })
+      );
+    } catch (error) {
+      console.error("Error fetching all penggunaan:", error);
+      return [];
     }
   },
 });
