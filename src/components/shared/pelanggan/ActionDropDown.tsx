@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Row } from "@tanstack/react-table";
 import { useMutation } from "convex/react";
-import { Info, MoreHorizontal, Trash } from "lucide-react";
+import { Copy, Info, MoreHorizontal, Trash } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { api } from "../../../../convex/_generated/api";
@@ -41,6 +41,15 @@ const ActionDropDown = ({ row }: { row: Row<dataPelangganType> }) => {
     }
     setOpen(false);
   };
+  const handleCopyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(row.getValue("_id"));
+      toast.success("ID Pelanggan berhasil disalin!");
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+      toast.error("Gagal menyalin ID Pelanggan.");
+    }
+  };
 
   return (
     <DropdownMenu open={open} onOpenChange={() => setOpen(!open)}>
@@ -58,7 +67,7 @@ const ActionDropDown = ({ row }: { row: Row<dataPelangganType> }) => {
             <AlertDialogTrigger className="flex items-center gap-2 w-full">
               <Info color="blue" /> detail pelanggan
             </AlertDialogTrigger>
-            <AlertDialogContent>
+            <AlertDialogContent className="overflow-auto">
               <AlertDialogHeader>
                 <AlertDialogTitle>Detail Pelanggan</AlertDialogTitle>
               </AlertDialogHeader>
@@ -67,7 +76,20 @@ const ActionDropDown = ({ row }: { row: Row<dataPelangganType> }) => {
                   <tr>
                     <td className="py-2">Id Pelanggan</td>
                     <td className="px-2 py-2">:</td>
-                    <td className="py-2">{row.getValue("_id")}</td>
+                    <td className="py-2 flex items-center gap-2">
+                      {row.getValue("_id")}
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="cursor-pointer relative group"
+                        onClick={handleCopyToClipboard}
+                      >
+                        <p className="absolute -bottom-4 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                          Salin
+                        </p>
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    </td>
                   </tr>
                   <tr>
                     <td className="py-2">Username</td>

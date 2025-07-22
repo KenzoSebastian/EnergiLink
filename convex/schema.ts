@@ -23,4 +23,12 @@ export default defineSchema({
     meterAwal: v.number(),
     meterAkhir: v.number(),
   }).index("idPelanggan_idTarif_index", ["idPelanggan", "idTarif"]),
+  tagihan: defineTable({
+    idPenggunaan: v.id("penggunaan"),
+    idPelanggan: v.id("user"),
+    periode: v.string(),
+    totalPenggunaan: v.number(),
+    totalTagihan: v.number(),
+    status: v.union(v.literal("Lunas"), v.literal("Belum Lunas")),
+  }).index("idPenggunaan_idPelanggan_index", ["idPenggunaan", "idPelanggan"]),
 });

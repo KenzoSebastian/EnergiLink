@@ -32,7 +32,11 @@ export const createPenggunaan = mutation({
 export const getAllPenggunaan = query({
   handler: async ({ db }) => {
     try {
-      const penggunaanList = await db.query("penggunaan").collect();
+      const penggunaanList = await db
+        .query("penggunaan")
+        .order("desc")
+        .collect();
+      
       return await Promise.all(
         penggunaanList.map(async (penggunaan) => {
           const pelanggan = await db.get(penggunaan.idPelanggan);

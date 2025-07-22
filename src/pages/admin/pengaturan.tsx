@@ -9,7 +9,7 @@ const PengaturanPage = () => {
     <AdminLayout textHeader="Pengaturan">
       {/* Sub-menu: Manajemen Tarif Listrik */}
       <div className="mb-6">
-        <h3 className="text-lg font-bold">Manajemen Tarif Listrik</h3>
+        <h3 className="text-lg font-bold mb-4">Manajemen Tarif Listrik</h3>
         <TableTarif data={dataTarif || []} />
       </div>
 

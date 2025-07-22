@@ -23,3 +23,15 @@ export const editTarif = mutation({
     }
   },
 });
+
+export const getTarifById = mutation({
+  args: { id: v.id("tarif") },
+  handler: async (ctx, { id }) => {
+    try {
+      return await ctx.db.get(id);
+    } catch (error) {
+      console.error("Error fetching tarif by ID:", error);
+      throw new Error("Failed to fetch tarif data by ID");
+    }
+  },
+});
