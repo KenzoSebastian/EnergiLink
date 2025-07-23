@@ -246,7 +246,7 @@ const FormCreatePenggunaan = ({
           />
         </div>
 
-        <Button type="submit" className="bg-blue-800 my-5 md:self-end">
+        <Button type="submit" variant="core" className="my-5 md:self-end">
           Simpan Penggunaan
         </Button>
       </form>

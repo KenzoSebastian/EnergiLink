@@ -24,7 +24,7 @@ const AdminLayout = ({ children, textHeader }: AdminLayoutProps) => {
       {/* <!-- Sidebar --> */}
       <SideBar showNav={showNav} setShowNav={setShowNav} />
       {/* <!-- Main Content --> */}
-      <div className="flex-1 py-6 px-3 md:px-6 md:ml-64 min-h-screen overflow-hidden bg-stone-100">
+      <div className="flex-1 py-6 px-3 md:px-6 md:ml-64 min-h-screen overflow-hidden bg-coreBg">
         <header className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-1">
             <Hamburger setStatus={setShowNav} status={showNav} />

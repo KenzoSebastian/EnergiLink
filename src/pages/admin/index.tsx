@@ -1,37 +1,55 @@
 import AdminLayout from "@/components/layouts/AdminLayout";
 import { useQuery } from "convex/react";
+import { useEffect, useState } from "react";
 import { api } from "../../../convex/_generated/api";
+import { ChartPendapatan } from "@/components/shared/ChartPendapatan";
 
 const AdminPage = () => {
   const dataPelanggan = useQuery(api.tables.user.getAllUser);
+  const tagihanUnDone = useQuery(api.tables.tagihan.getTagihanUnDone);
+  const tagihanDone = useQuery(api.tables.tagihan.getTagihanDone);
+  const [pendapatanBulanIni, setPendapatanBulanIni] = useState<number>(0);
+
+  useEffect(() => {
+    if (tagihanDone) {
+      const totalPendapatan = tagihanDone.reduce(
+        (acc, tagihan) => acc + tagihan.totalTagihan,
+        0
+      );
+      setPendapatanBulanIni(totalPendapatan);
+    }
+  }, [tagihanUnDone, tagihanDone]);
+
   return (
     <AdminLayout textHeader="Admin Dashboard">
       {/* Kartu Statistik Utama */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div className="bg-blue-400 p-4 shadow rounded-lg">
+        <div className="bg-core text-white p-4 shadow rounded-lg">
           <h3 className="">Total Pelanggan</h3>
           <p className="font-semibold text-2xl">{dataPelanggan?.length || 0}</p>
         </div>
-        <div className="bg-red-400 p-4 shadow rounded-lg">
+        <div className="bg-red-700 text-white p-4 shadow rounded-lg">
           <h3 className="">Tagihan Belum Lunas</h3>
-          <p className="font-semibold text-2xl">123.50</p>
+          <p className="font-semibold text-2xl">{tagihanUnDone?.length || 0}</p>
         </div>
-        <div className="bg-emerald-400 p-4 shadow rounded-lg">
+        <div className="bg-emerald-500 p-4 shadow rounded-lg">
           <h3 className="">Pendapatan Bulan Ini</h3>
-          <p className="font-semibold text-2xl">1,805</p>
+          <p className="font-semibold text-2xl">
+            {new Intl.NumberFormat("id-ID", {
+              style: "currency",
+              currency: "IDR",
+            }).format(pendapatanBulanIni)}
+          </p>
         </div>
-        <div className="bg-yellow-400 p-4 shadow rounded-lg">
+        <div className="bg-yellow-500 p-4 shadow rounded-lg">
           <h3 className="">Pelanggan Baru</h3>
           <p className="font-semibold text-2xl">54</p>
         </div>
       </div>
 
       {/* Grafik Tren Pendapatan */}
-      <div className="bg-white p-4 shadow rounded-lg mb-6">
-        <h3 className="text-lg font-bold">Grafik Tren Pendapatan</h3>
-        <div className="mt-4">
-          ini grafik tren pendapatan (misal: menggunakan library chart)
-        </div>
+      <div className="mb-6">
+        <ChartPendapatan />
       </div>
 
       {/* Tabel Notifikasi Penting */}

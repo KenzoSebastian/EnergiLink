@@ -46,11 +46,11 @@ const LoginPage = () => {
         <div className="w-full flex flex-col items-center px-5 md:px-10 py-7">
           <Logo />
           <div className="mt-5 w-full flex-1">
-            <h1 className="text-2xl font-bold text-blue-700 mb-3">Login</h1>
+            <h1 className="text-2xl font-bold text-core mb-3">Login</h1>
             <LoginForm submitText="Login" form={loginForm} onSubmitForm={handleSubmitForm}/>
             <p className="text-sm mt-3 flex flex-col items-center">
               Belum punya akun?{" "}
-              <Link href="/register" className="font-bold text-blue-900">
+              <Link href="/register" className="font-bold text-coreDarken hover:underline">
                 Daftar disini
               </Link>
             </p>

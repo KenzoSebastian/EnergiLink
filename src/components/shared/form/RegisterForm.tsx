@@ -102,7 +102,7 @@ export const RegisterForm = ({ form, submitText, onSubmitForm }: RegisterFormPro
           </FormControl>
           <FormLabel>Lihat Password</FormLabel>
         </FormItem>
-        <Button type="submit" className="bg-blue-800 my-5">
+        <Button type="submit" variant="core" className="my-5">
           {submitText}
         </Button>
       </form>

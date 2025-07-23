@@ -40,12 +40,12 @@ const SideBar = ({
         </div>
         <nav className="pt-10 flex flex-col flex-1 justify-between">
           <ul className="flex flex-col">
-            <li className={`transition-all ${activePage === "/admin" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
+            <li className={`transition-all ${activePage === "/admin" ? "bg-core" : "hover:bg-coreDarken"}`}>
               <Link className="px-5 py-3 inline-block w-full" href="/admin">
                 Dashboard
               </Link>
             </li>
-            <li className={`transition-all ${activePage === "/admin/pelanggan" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
+            <li className={`transition-all ${activePage === "/admin/pelanggan" ? "bg-core" : "hover:bg-coreDarken"}`}>
               <Link
                 className="px-5 py-3 inline-block w-full"
                 href="/admin/pelanggan"
@@ -53,7 +53,7 @@ const SideBar = ({
                 Pelanggan
               </Link>
             </li>
-            <li className={`transition-all ${activePage === "/admin/penggunaan" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
+            <li className={`transition-all ${activePage === "/admin/penggunaan" ? "bg-core" : "hover:bg-coreDarken"}`}>
               <Link
                 className="px-5 py-3 inline-block w-full"
                 href="/admin/penggunaan"
@@ -61,7 +61,7 @@ const SideBar = ({
                 pengunaan
               </Link>
             </li>
-            <li className={`transition-all ${activePage === "/admin/tagihan" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
+            <li className={`transition-all ${activePage === "/admin/tagihan" ? "bg-core" : "hover:bg-coreDarken"}`}>
               <Link
                 className="px-5 py-3 inline-block w-full"
                 href="/admin/tagihan"
@@ -69,7 +69,7 @@ const SideBar = ({
                 Tagihan
               </Link>
             </li>
-            <li className={`transition-all ${activePage === "/admin/laporan" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
+            <li className={`transition-all ${activePage === "/admin/laporan" ? "bg-core" : "hover:bg-coreDarken"}`}>
               <Link
                 className="px-5 py-3 inline-block w-full"
                 href="/admin/laporan"
@@ -77,7 +77,7 @@ const SideBar = ({
                 Laporan
               </Link>
             </li>
-            <li className={`transition-all ${activePage === "/admin/pengaturan" ? "bg-blue-700" : "hover:bg-blue-800"}`}>
+            <li className={`transition-all ${activePage === "/admin/pengaturan" ? "bg-core" : "hover:bg-coreDarken"}`}>
               <Link
                 className="px-5 py-3 inline-block w-full"
                 href="/admin/pengaturan"

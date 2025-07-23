@@ -62,7 +62,7 @@ const RegisterPage = () => {
         <div className="w-full flex flex-col items-center px-5 md:px-10 py-7">
           <Logo />
           <div className="mt-5 w-full flex-1">
-            <h1 className="text-2xl font-bold text-blue-700 mb-3">Register</h1>
+            <h1 className="text-2xl font-bold text-core mb-3">Register</h1>
             <RegisterForm
               submitText="Daftar"
               form={registerForm}
@@ -70,7 +70,7 @@ const RegisterPage = () => {
             />
             <p className="text-sm mt-3 flex flex-col items-center">
               Sudah punya akun?{" "}
-              <Link href="/login" className="font-bold text-blue-900">
+              <Link href="/login" className="font-bold text-coreDarken hover:underline">
                 Login disini
               </Link>
             </p>

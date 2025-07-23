@@ -49,3 +49,33 @@ export const getAllTagihan = query({
     }
   },
 });
+
+export const getTagihanUnDone = query({
+  handler: async (ctx) => {
+    try {
+      const tagihanList = await ctx.db
+        .query("tagihan")
+        .filter((q) => q.eq(q.field("status"), "Belum Lunas"))
+        .collect();
+      return tagihanList;
+    } catch (error) {
+      console.error("Error fetching undone tagihan:", error);
+      throw new Error("Failed to fetch undone tagihan data");
+    }
+  },
+});
+
+export const getTagihanDone = query({
+  handler: async (ctx) => {
+    try {
+      const tagihanList = await ctx.db
+        .query("tagihan")
+        .filter((q) => q.eq(q.field("status"), "Lunas"))
+        .collect();
+      return tagihanList;
+    } catch (error) {
+      console.error("Error fetching done tagihan:", error);
+      throw new Error("Failed to fetch done tagihan data");
+    }
+  },
+});

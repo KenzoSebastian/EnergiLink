@@ -87,7 +87,7 @@ export const getAllUser = query({
         .filter((q) => q.eq(q.field("role"), "user"))
         .collect();
     } catch (error) {
-      console.error("Error getting user by email:", error);
+      console.error("Error getting user:", error);
     }
   },
 });

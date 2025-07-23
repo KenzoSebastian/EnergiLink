@@ -3,6 +3,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-core: oklch(48.8% 0.243 264.376);
+  --color-coreDarken: oklch(42.4% 0.199 265.638);
+  --color-coreBg: oklch(97% 0.001 106.424);
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -118,4 +124,3 @@
     @apply bg-background text-foreground;
   }
 }
-
