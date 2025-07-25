@@ -12,6 +12,7 @@ const TagihanPage = () => {
   const dataTagihan = useQuery(api.tables.tagihan.getAllTagihan);
 
   useEffect(() => {
+    setData([]);
     dataTagihan?.forEach((item) => {
       setData((prevData) => [
         ...prevData,

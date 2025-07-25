@@ -54,3 +54,30 @@ export const getAllPenggunaan = query({
     }
   },
 });
+
+export const getPenggunaanByIdUser = query({
+  args: { idUser: v.id("user") },
+  handler: async ({ db }, { idUser }) => {
+    try {
+      const penggunaanList = await db
+        .query("penggunaan")
+        .filter((q) => q.eq(q.field("idPelanggan"), idUser))
+        .collect();
+      
+      return await Promise.all(
+        penggunaanList.map(async (penggunaan) => {
+          const pelanggan = await db.get(penggunaan.idPelanggan);
+          const tarif = await db.get(penggunaan.idTarif);
+          return {
+            ...penggunaan,
+            pelanggan,
+            tarif,
+          };
+        })
+      );
+    } catch (error) {
+      console.error("Error fetching all penggunaan:", error);
+      return [];
+    }
+  },
+});

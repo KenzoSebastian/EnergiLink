@@ -79,3 +79,19 @@ export const getTagihanDone = query({
     }
   },
 });
+
+export const getTagihanByIdUser = query({
+  args: { idUser: v.id("user") },
+  handler: async ({ db }, { idUser }) => {
+    try {
+      const tagihanList = await db
+        .query("tagihan")
+        .filter((q) => q.eq(q.field("idPelanggan"), idUser)).order("desc")
+        .collect();
+      return tagihanList;
+    } catch (error) {
+      console.error("Error fetching done tagihan:", error);
+      throw new Error("Failed to fetch tagihan data by id user");
+    }
+  },
+});

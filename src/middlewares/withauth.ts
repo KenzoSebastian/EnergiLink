@@ -24,11 +24,11 @@ export default function withAuth(
         const url = new URL("/login", request.url);
         return NextResponse.redirect(url);
       }
-      if (token.role === "user" && userLimits.includes(pathname)) {
+      if (token.role === "user" && userLimits.includes(`/${firstSegment}`)) {
         const url = new URL("/dashboard", request.url);
         return NextResponse.redirect(url);
       }
-      if (token.role === "admin" && adminLimits.includes(pathname)) {
+      if (token.role === "admin" && adminLimits.includes(`/${firstSegment}`)) {
         const url = new URL("/admin", request.url);
         return NextResponse.redirect(url);
       }

@@ -20,10 +20,10 @@ const SideBar = ({
   return (
     <div>
       <div
-        className={`md:w-64 w-48 bg-blue-950 text-white flex flex-col h-screen fixed transition-all md:left-0 z-30 duration-500 ${showNav ? "left-0" : "-left-50"}`}
+        className={`md:w-64 w-48 bg-navigation text-white flex flex-col h-screen fixed transition-all md:left-0 z-30 duration-500 ${showNav ? "left-0" : "-left-50"}`}
       >
         <div className="flex items-center pt-6 px-4">
-          <div className="items-center gap-3 hidden md:flex">
+          <Link href="/admin" className="items-center gap-3 hidden md:flex">
             <Image
               src="/logo.png"
               alt="Logo"
@@ -36,7 +36,7 @@ const SideBar = ({
               <span className="text-4xl font-bold">Energi</span>
               <span className="text-2xl">Link</span>
             </div>
-          </div>
+          </Link>
         </div>
         <nav className="pt-10 flex flex-col flex-1 justify-between">
           <ul className="flex flex-col">

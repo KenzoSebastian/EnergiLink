@@ -1,7 +1,7 @@
 "use client";
 
 import { TrendingUp } from "lucide-react";
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
+import { CartesianGrid, LabelList, Line, LineChart, XAxis } from "recharts";
 
 import {
   Card,
@@ -44,7 +44,10 @@ export function ChartPendapatan() {
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer className="h-70 sm:h-85 md:h-120 w-full" config={chartConfig}>
+        <ChartContainer
+          className="h-70 sm:h-85 md:h-120 w-full"
+          config={chartConfig}
+        >
           <LineChart
             accessibilityLayer
             data={chartData}
@@ -70,8 +73,20 @@ export function ChartPendapatan() {
               type="natural"
               stroke="var(--color-desktop)"
               strokeWidth={1}
-              dot={false}
-            />
+              dot={{
+                fill: "var(--color-desktop)",
+              }}
+              activeDot={{
+                r: 6,
+              }}
+            >
+              <LabelList
+                position="top"
+                offset={12}
+                className="fill-foreground"
+                fontSize={12}
+              />
+            </Line>
           </LineChart>
         </ChartContainer>
       </CardContent>

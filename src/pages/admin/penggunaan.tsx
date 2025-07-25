@@ -39,6 +39,7 @@ const PenggunaanPage = () => {
   });
 
   useEffect(() => {
+    setData([]);
     getAllPenggunaan?.forEach((item) => {
       setData((prevData) => [
         ...prevData,

@@ -27,12 +27,14 @@ import { useQuery } from "convex/react";
 import { CalendarIcon } from "lucide-react";
 import { ControllerRenderProps, UseFormReturn } from "react-hook-form";
 import { api } from "../../../../convex/_generated/api";
+import { useEffect } from "react";
 
 type FormCreatePenggunaanProps = {
   form: UseFormReturn<PenggunaanCreateSchemaValue>;
   onSubmitForm: (data: PenggunaanCreateSchemaValue) => void;
   currentDate: Date;
   setCurrentDate: (date: Date) => void;
+  type: "admin" | "user";
 };
 
 const FormCreatePenggunaan = ({
@@ -40,6 +42,7 @@ const FormCreatePenggunaan = ({
   onSubmitForm,
   currentDate,
   setCurrentDate,
+  type = "admin",
 }: FormCreatePenggunaanProps) => {
   const dataTarif = useQuery(api.tables.tarif.getAllTarif);
 
@@ -80,6 +83,7 @@ const FormCreatePenggunaan = ({
     field.onChange(year);
     setCurrentDate(date || new Date());
   };
+
   return (
     <Form {...form}>
       <form
@@ -94,7 +98,7 @@ const FormCreatePenggunaan = ({
               <FormItem className="mb-5 w-full">
                 <FormLabel>Id Pelanggan</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={type === "user"} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
