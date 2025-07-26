@@ -7,6 +7,7 @@ import Link from "next/link";
 
 const AdminPage = () => {
   const dataPelanggan = useQuery(api.tables.user.getAllUser);
+  const newUser = useQuery(api.tables.user.getNewUser);
   const tagihanUnDone = useQuery(api.tables.tagihan.getTagihanUnDone);
   const tagihanDone = useQuery(api.tables.tagihan.getTagihanDone);
   const [pendapatanBulanIni, setPendapatanBulanIni] = useState<number>(0);
@@ -21,7 +22,7 @@ useEffect(() => {
     );
     setPendapatanBulanIni(totalPendapatan);
     setListPendapatan(
-      tagihanDone.slice(-10).map((tagihan) => ({
+      tagihanDone.slice(-7).map((tagihan) => ({
         amount: tagihan.totalTagihan,
       }))
     );
@@ -51,7 +52,7 @@ useEffect(() => {
         </div>
         <div className="bg-yellow-500 p-4 shadow rounded-lg">
           <h3 className="">Pelanggan Baru</h3>
-          <p className="font-semibold text-2xl">54</p>
+          <p className="font-semibold text-2xl">{newUser?.length || 0}</p>
         </div>
       </div>
 

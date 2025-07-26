@@ -92,6 +92,26 @@ export const getAllUser = query({
   },
 });
 
+export const getNewUser = query({
+  handler: async (ctx) => {
+    const dateNow = new Date();
+    const threeDaysAgo = new Date(dateNow.getTime() - 3 * 24 * 60 * 60 * 1000);
+    try {
+      return await ctx.db
+        .query("user")
+        .filter((q) =>
+          q.and(
+            q.eq(q.field("role"), "user"),
+            q.gt(q.field("_creationTime"), threeDaysAgo.getTime())
+          )
+        )
+        .collect();
+    } catch (error) {
+      console.error("Error getting user:", error);
+    }
+  },
+});
+
 export const deleteUsers = mutation({
   args: { idArray: v.array(v.string()) },
   handler: async (ctx, { idArray }) => {
