@@ -69,14 +69,6 @@ const SideBar = ({
                 Tagihan
               </Link>
             </li>
-            <li className={`transition-all ${activePage === "/admin/laporan" ? "bg-core" : "hover:bg-coreDarken"}`}>
-              <Link
-                className="px-5 py-3 inline-block w-full"
-                href="/admin/laporan"
-              >
-                Laporan
-              </Link>
-            </li>
             <li className={`transition-all ${activePage === "/admin/pengaturan" ? "bg-core" : "hover:bg-coreDarken"}`}>
               <Link
                 className="px-5 py-3 inline-block w-full"

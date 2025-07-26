@@ -18,6 +18,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useState } from "react";
+import ActionTagihanAdmin from "./ActionTagihanAdmin";
 
 export type dataTagihanType = {
   _id: string;
@@ -82,6 +83,16 @@ const columns: ColumnDef<dataTagihanType>[] = [
           {row.getValue("status")}
         </Badge>
       );
+    },
+  },
+  {
+    id: "actions",
+    enableHiding: false,
+    cell: ({ row }) => {
+      if (row.getValue("status") === "Lunas") {
+        return null;
+      }
+      return <ActionTagihanAdmin row={row} />;
     },
   },
 ];

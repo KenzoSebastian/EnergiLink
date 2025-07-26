@@ -1,15 +1,13 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
-import { CartesianGrid, LabelList, Line, LineChart, XAxis } from "recharts";
+import { CartesianGrid, LabelList, Line, LineChart } from "recharts";
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import {
   ChartConfig,
@@ -20,15 +18,6 @@ import {
 
 export const description = "A line chart";
 
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-];
-
 const chartConfig = {
   desktop: {
     label: "pendapatan",
@@ -36,12 +25,18 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function ChartPendapatan() {
+type dataPendapatanProps = {
+  dataPendapatan: {
+    amount: number;
+  }[];
+};
+
+export const ChartPendapatan = ({ dataPendapatan }: dataPendapatanProps) => {
   return (
     <Card>
       <CardHeader>
         <CardTitle className="text-lg font-bold">Grafik Pendapatan</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardDescription></CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer
@@ -50,26 +45,30 @@ export function ChartPendapatan() {
         >
           <LineChart
             accessibilityLayer
-            data={chartData}
+            data={dataPendapatan}
             margin={{
-              left: 12,
-              right: 12,
+              left: 60,
+              right: 60,
             }}
           >
             <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={
+                <ChartTooltipContent
+                  hideLabel
+                  hideIndicator
+                  formatter={(value) =>
+                    `amount: ${new Intl.NumberFormat("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    }).format(Number(value))}`
+                  }
+                />
+              }
             />
             <Line
-              dataKey="desktop"
+              dataKey="amount"
               type="natural"
               stroke="var(--color-desktop)"
               strokeWidth={1}
@@ -85,19 +84,17 @@ export function ChartPendapatan() {
                 offset={12}
                 className="fill-foreground"
                 fontSize={12}
+                formatter={(value: number) =>
+                  new Intl.NumberFormat("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                  }).format(Number(value))
+                }
               />
             </Line>
           </LineChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 leading-none font-medium">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="text-muted-foreground leading-none">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   );
-}
+};

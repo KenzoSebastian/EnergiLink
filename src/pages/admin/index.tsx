@@ -3,37 +3,45 @@ import { useQuery } from "convex/react";
 import { useEffect, useState } from "react";
 import { api } from "../../../convex/_generated/api";
 import { ChartPendapatan } from "@/components/shared/ChartPendapatan";
+import Link from "next/link";
 
 const AdminPage = () => {
   const dataPelanggan = useQuery(api.tables.user.getAllUser);
   const tagihanUnDone = useQuery(api.tables.tagihan.getTagihanUnDone);
   const tagihanDone = useQuery(api.tables.tagihan.getTagihanDone);
   const [pendapatanBulanIni, setPendapatanBulanIni] = useState<number>(0);
+  const [listPendapatan, setListPendapatan] = useState<{ amount: number }[]>([]);
 
-  useEffect(() => {
-    if (tagihanDone) {
-      const totalPendapatan = tagihanDone.reduce(
-        (acc, tagihan) => acc + tagihan.totalTagihan,
-        0
-      );
-      setPendapatanBulanIni(totalPendapatan);
-    }
-  }, [tagihanUnDone, tagihanDone]);
+useEffect(() => {
+  setListPendapatan([]);
+  if (tagihanDone) {
+    const totalPendapatan = tagihanDone.reduce(
+      (acc, tagihan) => acc + tagihan.totalTagihan,
+      0
+    );
+    setPendapatanBulanIni(totalPendapatan);
+    setListPendapatan(
+      tagihanDone.slice(-10).map((tagihan) => ({
+        amount: tagihan.totalTagihan,
+      }))
+    );
+  }
+}, [tagihanUnDone, tagihanDone]);
 
   return (
     <AdminLayout textHeader="Admin Dashboard">
       {/* Kartu Statistik Utama */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div className="bg-core text-white p-4 shadow rounded-lg">
+        <Link href="/admin/pelanggan" className="bg-core text-white p-4 shadow rounded-lg">
           <h3 className="">Total Pelanggan</h3>
           <p className="font-semibold text-2xl">{dataPelanggan?.length || 0}</p>
-        </div>
-        <div className="bg-red-700 text-white p-4 shadow rounded-lg">
+        </Link>
+        <Link href="/admin/tagihan" className="bg-red-700 text-white p-4 shadow rounded-lg">
           <h3 className="">Tagihan Belum Lunas</h3>
           <p className="font-semibold text-2xl">{tagihanUnDone?.length || 0}</p>
-        </div>
+        </Link>
         <div className="bg-emerald-500 p-4 shadow rounded-lg">
-          <h3 className="">Pendapatan Bulan Ini</h3>
+          <h3 className="">Pendapatan</h3>
           <p className="font-semibold text-2xl">
             {new Intl.NumberFormat("id-ID", {
               style: "currency",
@@ -49,44 +57,9 @@ const AdminPage = () => {
 
       {/* Grafik Tren Pendapatan */}
       <div className="mb-6">
-        <ChartPendapatan />
-      </div>
-
-      {/* Tabel Notifikasi Penting */}
-      <div className="bg-white p-4 shadow rounded-lg mb-6">
-        <h3 className="text-lg font-bold">Notifikasi Penting</h3>
-        <table className="min-w-full mt-4">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="py-2 px-4 text-left">Tagihan</th>
-              <th className="py-2 px-4 text-left">Jatuh Tempo</th>
-              <th className="py-2 px-4 text-left">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="py-2 px-4">Tagihan 1</td>
-              <td className="py-2 px-4">01/12/2023</td>
-              <td className="py-2 px-4 text-red-500">Belum Lunas</td>
-            </tr>
-            <tr>
-              <td className="py-2 px-4">Tagihan 2</td>
-              <td className="py-2 px-4">05/12/2023</td>
-              <td className="py-2 px-4 text-green-500">Lunas</td>
-            </tr>
-            {/* Tambahkan baris lainnya sesuai kebutuhan */}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Log Aktivitas Admin */}
-      <div className="bg-white p-4 shadow rounded-lg">
-        <h3 className="text-lg font-bold">Log Aktivitas Admin</h3>
-        <ul className="mt-4">
-          <li>Admin Budi menambahkan pelanggan baru</li>
-          <li>Admin Ani menginput penggunaan untuk 10 pelanggan</li>
-          {/* Tambahkan aktivitas lainnya sesuai kebutuhan */}
-        </ul>
+        <ChartPendapatan
+          dataPendapatan={listPendapatan}
+        />
       </div>
     </AdminLayout>
   );

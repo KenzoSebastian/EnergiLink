@@ -84,7 +84,7 @@ const ActionDropDown = ({ row }: { row: Row<dataPelangganType> }) => {
                         className="cursor-pointer relative group"
                         onClick={handleCopyToClipboard}
                       >
-                        <p className="absolute -bottom-4 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                        <p className="absolute -top-6 opacity-0 transition-all duration-300 group-hover:opacity-100">
                           Salin
                         </p>
                         <Copy className="h-4 w-4" />
@@ -105,16 +105,6 @@ const ActionDropDown = ({ row }: { row: Row<dataPelangganType> }) => {
                     <td className="py-2">no KWH</td>
                     <td className="px-2 py-2">:</td>
                     <td className="py-2">{row.getValue("nomorKwh")}</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2">pemakaian</td>
-                    <td className="px-2 py-2">:</td>
-                    <td className="py-2">1000 kWh</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2">status bayar</td>
-                    <td className="px-2 py-2">:</td>
-                    <td className="py-2">Lunas</td>
                   </tr>
                 </tbody>
               </table>
