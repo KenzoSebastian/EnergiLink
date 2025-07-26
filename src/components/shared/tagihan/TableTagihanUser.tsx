@@ -23,8 +23,13 @@ import { ActionTagihan } from "./ActionTagihan";
 export type dataTagihanUserType = {
   _id: string;
   periode: string;
+  meterAwal: number;
+  meterAkhir: number;
   totalPenggunaan: number;
   totalTagihan: number;
+  jenisTarif: string;
+  daya: number;
+  harga: number;
   status: "Lunas" | "Belum Lunas";
 };
 
@@ -41,6 +46,31 @@ const columns: ColumnDef<dataTagihanUserType>[] = [
     cell: ({ row }) => {
       return <div>{row.getValue("periode")}</div>;
     },
+  },
+  {
+    accessorKey: "meterAwal",
+    header: "Meter Awal",
+    enableHiding: true,
+  },
+  {
+    accessorKey: "meterAkhir",
+    header: "Meter Akhir",
+    enableHiding: true,
+  },
+  {
+    accessorKey: "jenisTarif",
+    header: "Jenis Tarif",
+    enableHiding: true,
+  },
+  {
+    accessorKey: "daya",
+    header: "Daya (VA)",
+    enableHiding: true,
+  },
+  {
+    accessorKey: "harga",
+    header: "Tarif per kWh (Rp)",
+    enableHiding: true,
   },
   {
     accessorKey: "totalPenggunaan",
@@ -91,6 +121,11 @@ const columns: ColumnDef<dataTagihanUserType>[] = [
 export function TableTagihanUser({ data }: { data: dataTagihanUserType[] }) {
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
     ["_id"]: false,
+    ["meterAwal"]: false,
+    ["meterAkhir"]: false,
+    ["jenisTarif"]: false,
+    ["daya"]: false,
+    ["harga"]: false,
   });
   const table = useReactTable({
     data,

@@ -86,12 +86,36 @@ export const getTagihanByIdUser = query({
     try {
       const tagihanList = await db
         .query("tagihan")
-        .filter((q) => q.eq(q.field("idPelanggan"), idUser)).order("desc")
+        .filter((q) => q.eq(q.field("idPelanggan"), idUser))
+        .order("desc")
         .collect();
-      return tagihanList;
+
+      return await Promise.all(
+        tagihanList.map(async (tagihan) => {
+          const penggunaan = await db.get(tagihan.idPenggunaan);
+          const tarif = await db.get(penggunaan!.idTarif);
+          return {
+            ...tagihan,
+            penggunaan,
+            tarif,
+          };
+        })
+      );
     } catch (error) {
       console.error("Error fetching done tagihan:", error);
       throw new Error("Failed to fetch tagihan data by id user");
+    }
+  },
+});
+
+export const bayarTagihan = mutation({
+  args: { id: v.id("tagihan") },
+  handler: async ({ db }, { id }) => {
+    try {
+      return await db.patch(id, { status: "Lunas" });
+    } catch (error) {
+      console.error("Error bayar tagihan:", error);
+      throw new Error("Failed to bayar tagihan");
     }
   },
 });
