@@ -1,6 +1,5 @@
 import { HeroSection } from "@/components/sectionUser/HeroSection";
 import { Navigation } from "@/components/sectionUser/Navigation";
-import { Button } from "@/components/ui/button";
 import { useQuery } from "convex/react";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -14,11 +13,6 @@ const DashboardPage = () => {
   const userData = useQuery(api.tables.user.getUserByIdQuery, {
     id: idUser || "",
   });
-  // const tagihanData = useQuery(api.tables.tagihan.getTagihanByUserId, {
-  //   userId,
-  // });
-
-  const [usage, setUsage] = useState("");
 
   useEffect(() => {
     if (sessionData) {
@@ -26,15 +20,8 @@ const DashboardPage = () => {
     }
   }, [sessionData]);
 
-  const handleUsageSubmit = (e) => {
-    e.preventDefault();
-    // Handle input usage submission logic here, e.g., send to API
-    console.log("Usage submitted:", usage);
-    setUsage("");
-  };
-
   return (
-    <div className="flex flex-col min-h-5000 bg-white">
+    <div className="flex flex-col min-h-screen bg-white">
       {/* Fixed Navigation Bar */}
       <Navigation />
 
