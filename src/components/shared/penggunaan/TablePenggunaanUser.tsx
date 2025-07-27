@@ -9,7 +9,6 @@ import {
 } from "@tanstack/react-table";
 import * as React from "react";
 
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -18,7 +17,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import ActionDropDown from "../pelanggan/ActionDropDown";
 
 export type dataPenggunaanUserType = {
   bulan: string;
