@@ -34,14 +34,14 @@ import {
 } from "@/schema/bayarTagihan";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Row } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { dataTagihanUserType } from "./TableTagihanUser";
-import { toast } from "sonner";
 import { useMutation } from "convex/react";
+import { MoreHorizontal } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { api } from "../../../../convex/_generated/api";
 import { Id } from "../../../../convex/_generated/dataModel";
+import { dataTagihanUserType } from "./TableTagihanUser";
 
 export const ActionTagihan = ({ row }: { row: Row<dataTagihanUserType> }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -54,8 +54,11 @@ export const ActionTagihan = ({ row }: { row: Row<dataTagihanUserType> }) => {
     BayarTagihanSchemaValue
   >({
     resolver: zodResolver(bayarTagihanSchema),
-    defaultValues: { id: row.getValue("_id") },
   });
+
+  useEffect(() => {
+    bayarTagihanForm.setValue("id", row.getValue("_id"));
+  }, [bayarTagihanForm, row]);
 
   const handleSubmitForm = async (data: BayarTagihanSchemaValue) => {
     const totalTagihan = row.getValue("totalTagihan");
@@ -70,11 +73,11 @@ export const ActionTagihan = ({ row }: { row: Row<dataTagihanUserType> }) => {
       }
       try {
         await bayarTagihan({ id: data.id as Id<"tagihan"> });
+        // toast.success("Pembayaran berhasil");
       } catch (error) {
         console.error("Error bayar tagihan:", error);
         toast.error("Gagal bayar tagihan.");
       }
-
       bayarTagihanForm.reset();
       setOpen(false);
     }
@@ -82,7 +85,10 @@ export const ActionTagihan = ({ row }: { row: Row<dataTagihanUserType> }) => {
 
   return (
     <DropdownMenu open={open} onOpenChange={() => setOpen(!open)}>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger
+        asChild
+        className={`${row.getValue("status") === "Lunas" && "hidden"}`}
+      >
         <Button variant="ghost" className="h-8 w-8 p-0">
           <span className="sr-only">Open menu</span>
           <MoreHorizontal />
@@ -94,7 +100,7 @@ export const ActionTagihan = ({ row }: { row: Row<dataTagihanUserType> }) => {
         <DropdownMenuItem>
           <Form {...bayarTagihanForm}>
             <AlertDialog>
-              <AlertDialogTrigger className="flex items-center gap-2 w-full">
+              <AlertDialogTrigger className={"flex items-center gap-2 w-full"}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
